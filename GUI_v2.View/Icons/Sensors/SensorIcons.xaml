@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GUI_v2.View.Icons">
+
+    <BitmapImage x:Key="accOn" UriSource="sensor_acc_on.png"/>
+    <BitmapImage x:Key="accOff" UriSource="sensor_acc_off.png"/>
+    <BitmapImage x:Key="accError" UriSource="sensor_acc_error.png"/>
+    
+    <BitmapImage x:Key="gyroOn" UriSource="sensor_gyro_on.png"/>
+    <BitmapImage x:Key="gyroOff" UriSource="sensor_gyro_off.png"/>
+    <BitmapImage x:Key="gyroError" UriSource="sensor_gyro_error.png"/>
+
+    <BitmapImage x:Key="magOn" UriSource="sensor_mag_on.png"/>
+    <BitmapImage x:Key="magOff" UriSource="sensor_mag_off.png"/>
+    <BitmapImage x:Key="magError" UriSource="sensor_mag_error.png"/>
+
+    <BitmapImage x:Key="baroOn" UriSource="sensor_baro_on.png"/>
+    <BitmapImage x:Key="baroOff" UriSource="sensor_baro_off.png"/>
+    <BitmapImage x:Key="baroError" UriSource="sensor_baro_error.png"/>
+
+</ResourceDictionary>

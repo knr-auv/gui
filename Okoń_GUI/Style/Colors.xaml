@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GUI_v2.View.style">
+
+    <Color  x:Key="BackgroundColor">#FFBBBBBB</Color>
+    <Color x:Key="SteelBlue">#3A7CA5</Color>
+    <Color x:Key="LapisLazuli">#2F6690</Color>
+    <Color x:Key="DarkSkyBlue">#81c3d7</Color>
+    <Color x:Key="OverlayColor">Black</Color>
+    <Color x:Key="ForegroundColor">#d9dcd6</Color>
+
+</ResourceDictionary>

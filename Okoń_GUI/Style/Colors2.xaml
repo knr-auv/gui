@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GUI_v2.View.style"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <Color  x:Key="BackgroundColor">#03071e</Color>
+
+    <Color x:Key="SurfaceColor">#219ebc</Color>
+    <sys:Double x:Key="OnBackgroundOpacity">0.2</sys:Double>
+    <sys:Double x:Key="SurfaceOpacity">0.2</sys:Double>
+
+    <Color x:Key="PrimaryColor">#219ebc</Color>
+    <Color x:Key="PrimaryDarker">#023047</Color>
+    <Color x:Key="SecondaryColor">#fb8500</Color>
+
+    <Color x:Key="OnSurfaceColor">White</Color>
+    <Color x:Key="OnPrimaryColor">White</Color>
+    <Color x:Key="OnSecondaryColor">#03071e</Color>
+
+    <Color x:Key="ButtonOnClickColor" >#ffb703</Color>
+    <Color x:Key="ButtonOnHoverColor" >#1E8FAE</Color>
+    <Color x:Key="ButtonBackgroundColor">#219ebc</Color>
+</ResourceDictionary>

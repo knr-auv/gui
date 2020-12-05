@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="GUI_v2.View.Common.BatteryWidget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_v2.View.Common"
+       Name="UC"
+             mc:Ignorable="d">
+    
+    <UserControl.Resources>
+
+
+        <SolidColorBrush x:Key="StrokeBrush" Color="{StaticResource SecondaryColor}" Opacity="0.5"/>
+        <Storyboard x:Key="BlinkAnimation" x:Name="BlinkAnimation">
+            <DoubleAnimation 
+                     Storyboard.TargetProperty="Opacity"
+                Storyboard.TargetName="UC"
+                     From="0.5"
+                     To="1"
+                RepeatBehavior="Forever"
+                     AutoReverse="True"
+                     FillBehavior="Stop"
+                     />
+
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <Grid>
+        
+        <Path Data="M81.166002,0.5 L132.83299,0.5 C135.59442,0.5 137.83299,2.7385769 137.83299,5.5 L137.83299,25.500003 203.5,25.500003 C209.02284,25.5 213.5,29.977152 213.5,35.500001 L213.5,414.5 C213.5,420.02286 209.02284,424.5 203.5,424.5 L10.499998,424.5 C4.9771535,424.5 0.50000119,420.02286 0.5,414.5 L0.5,35.500001 C0.50000119,29.977152 4.9771535,25.5 10.499998,25.500003 L76.166002,25.500003 76.166002,5.5 C76.166002,2.7385769 78.40458,0.5 81.166002,0.5 z"
+              HorizontalAlignment="Center" 
+              Stretch="Fill"
+           
+              StrokeThickness="2"
+              Stroke="{StaticResource StrokeBrush}"
+              >
+            <Path.Fill>
+                <SolidColorBrush Color="{StaticResource PrimaryDarker}"/>
+            </Path.Fill>
+            
+
+            <Path.LayoutTransform>
+                <RotateTransform Angle="90"></RotateTransform>
+            </Path.LayoutTransform>
+        </Path>
+        <Path x:Name="BatPath" Data="M81.166002,0.5 L132.83299,0.5 C135.59442,0.5 137.83299,2.7385769 137.83299,5.5 L137.83299,25.500003 203.5,25.500003 C209.02284,25.5 213.5,29.977152 213.5,35.500001 L213.5,414.5 C213.5,420.02286 209.02284,424.5 203.5,424.5 L10.499998,424.5 C4.9771535,424.5 0.50000119,420.02286 0.5,414.5 L0.5,35.500001 C0.50000119,29.977152 4.9771535,25.5 10.499998,25.500003 L76.166002,25.500003 76.166002,5.5 C76.166002,2.7385769 78.40458,0.5 81.166002,0.5 z"
+              HorizontalAlignment="Center" 
+              Stretch="Fill"
+              
+              StrokeThickness="2" Stroke="{StaticResource StrokeBrush}"
+              >
+            <Path.LayoutTransform>
+                <RotateTransform Angle="90"></RotateTransform>
+            </Path.LayoutTransform>
+
+
+            <Path.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop x:Name="grad1" Color="Transparent" Offset="0.3"/>
+                    <GradientStop x:Name="grad2" Color="White" Offset="0.35"/>
+                </LinearGradientBrush>
+            </Path.OpacityMask>
+
+
+        </Path>
+        <Path Data="M81.166002,0.5 L132.83299,0.5 C135.59442,0.5 137.83299,2.7385769 137.83299,5.5 L137.83299,25.500003 203.5,25.500003 C209.02284,25.5 213.5,29.977152 213.5,35.500001 L213.5,414.5 C213.5,420.02286 209.02284,424.5 203.5,424.5 L10.499998,424.5 C4.9771535,424.5 0.50000119,420.02286 0.5,414.5 L0.5,35.500001 C0.50000119,29.977152 4.9771535,25.5 10.499998,25.500003 L76.166002,25.500003 76.166002,5.5 C76.166002,2.7385769 78.40458,0.5 81.166002,0.5 z"
+              HorizontalAlignment="Center" 
+              Stretch="Fill"
+              Fill="Transparent"
+              StrokeThickness="2" Stroke="{StaticResource StrokeBrush}"
+              
+              >
+            
+            <Path.LayoutTransform>
+                <RotateTransform Angle="90"></RotateTransform>
+            </Path.LayoutTransform>
+        </Path>
+
+        <!--  <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="400"  Stroke="Black" VerticalAlignment="Center" Width="214" RadiusX="10" RadiusY="10"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="46"  Stroke="Black" VerticalAlignment="Top" Width="62.667" Margin="193.666,0,193.667,0" RadiusX="5" RadiusY="5"/>
+-->
+    </Grid>
+</UserControl>

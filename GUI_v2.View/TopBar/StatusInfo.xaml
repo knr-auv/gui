@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="GUI_v2.View.TopBar.StatusInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:common="clr-namespace:GUI_v2.View.Common"
+             xmlns:local="clr-namespace:GUI_v2.View.TopBar"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="250"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Icons/Sensors/SensorIcons.xaml"/>
+                <ResourceDictionary Source="TopBarStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+   
+        <Border Name="Border" BorderThickness="2" BorderBrush="{StaticResource SensorStatusBorder}" CornerRadius="5" Background="{StaticResource SensorStatusBackground}" Margin="4">
+        <Grid>
+            <StackPanel Height="{Binding ActualHeight, ElementName=Border}" Orientation="Horizontal" Background="{DynamicResource SensorStatusBackground}">
+             
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="{StaticResource accOff}" Height="50" Visibility="{Binding AccStatus.off, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Source="{StaticResource accOn}" Height="50" Visibility="{Binding AccStatus.on, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Source="{StaticResource accError}" Height="50" Visibility="{Binding AccStatus.error, Converter={StaticResource VisibilityConverter}}"/>
+                    <Label Content="Acc" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="{StaticResource gyroOff}" Height="50" Visibility="{Binding GyroStatus.off, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Panel.ZIndex="1" Source="{StaticResource gyroOn}" Height="50" Visibility="{Binding GyroStatus.on, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Panel.ZIndex="2" Source="{StaticResource gyroError}" Height="50" Visibility="{Binding GyroStatus.error, Converter={StaticResource VisibilityConverter}}"/>
+                    <Label Content="Gyro" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="{StaticResource magOff}" Height="50"  Visibility="{Binding MagStatus.off, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Panel.ZIndex="1" Source="{StaticResource magOn}" Height="50" Visibility="{Binding MagStatus.on, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Panel.ZIndex="2" Source="{StaticResource magError}" Height="50" Visibility="{Binding MagStatus.error, Converter={StaticResource VisibilityConverter}}"/>
+                    <Label Content="Mag" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Panel.ZIndex="1" Source="{StaticResource baroOn}" Height="50" Visibility="{Binding BaroStatus.on, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Panel.ZIndex="1" Source="{StaticResource baroOff}" Height="50" Visibility="{Binding BaroStatus.off, Converter={StaticResource VisibilityConverter}}"/>
+                    <Image Panel.ZIndex="1" Source="{StaticResource baroError}" Height="50" Visibility="{Binding BaroStatus.error, Converter={StaticResource VisibilityConverter}}"/>
+                    <Label Panel.ZIndex="0" Content="Baro" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10"/>
+                </Grid>
+                <!--
+                <Grid Width="50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <local:HummidityIcon HummidityLevel="{Binding Hummidity}" Width="35" Padding="2 7 5 0" IsEnabled="{Binding JetsonConnected}"/>
+                    <Label  Panel.ZIndex="0" Content="Humm." Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10"/>
+                </Grid>-->
+            </StackPanel>
+        </Grid>
+    </Border>    
+        
+
+</UserControl>

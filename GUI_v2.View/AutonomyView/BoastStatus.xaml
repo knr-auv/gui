@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="GUI_v2.View.AutonomyView.BoatStatus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_v2.View.AutonomyView"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="AutonomyPageStyle.xaml"/>
+    </UserControl.Resources>
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--#region FirstElement -->
+        <Grid Grid.Column="0" Background="{StaticResource SurfaceBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Position" Width="115"/>
+                <Label Content="x :"/>
+                <Label Content="{Binding posX}" Padding="0 5 5 0" Width="30" ContentStringFormat="0.0" HorizontalContentAlignment="Center"/>
+                <Label Content="y :"/>
+                <Label Content="{Binding posY}" Padding="0 5 5 0" Width="30" ContentStringFormat="0.0" HorizontalContentAlignment="Center"/>
+                <Label Content="z :"/>
+                <Label Content="{Binding posZ}" Padding="0 5 5 0" Width="30" ContentStringFormat="0.0" HorizontalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Label Content="Velocity" Width="115"/>
+
+                <Label Content="{Binding Velocity}" Padding="0 5 5 0" ContentStringFormat="0.00" Width="30" HorizontalContentAlignment="Right"/>
+                <Label Content="[m/s]"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Label Content="Acceleration" Width="115"/>
+                <Label Content="{Binding Acceleration}" Padding="0 5 5 0" Width="30" ContentStringFormat="0.00" HorizontalContentAlignment="Right"/>
+                <Label Content="[m/2&#x00B2;]"/>
+
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+        
+        
+        
+        <!--#region ThirdElement -->
+        <Grid Grid.Column="1" Background="{StaticResource SurfaceBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5 0 0 0">
+            <Label Content="Motors info + attitude" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <!--#endregion-->
+    </Grid>
+</UserControl>

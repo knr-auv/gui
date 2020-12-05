@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="GUI_v2.View.ControlPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_v2.View.ControlView" 
+             xmlns:common="clr-namespace:GUI_v2.View.Common"
+             xmlns:HUD="clr-namespace:GUI_v2.View.Common.HUD"
+             xmlns:converters="clr-namespace:GUI_v2.View.Converters"
+             xmlns:movement="clr-namespace:GUI_v2.View.IMUView.MovementInfo"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="ControlPageStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+            <converters:BoolToVisibilityReversed x:Key="VisibilityReversedConverter"/>
+            <converters:InversedBool x:Key="InverseBool"/>
+            <local:DetectionButtonConverter x:Key="ToggleBtnConverter"/>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+   
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+ 
+        </Grid.ColumnDefinitions>
+        
+            <Grid Background="{StaticResource ControlSettingsBackground}" Margin="0 0 5 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+                
+            <!--#region FirstRow -->
+            <Grid Grid.Row="0" Background="{StaticResource ControlSettingsSurfaceBrush}" Margin="5">
+                <Grid Margin="10" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Width="Auto">
+                        <Label Content="Control:"/>
+                        <ComboBox x:Name="ControlBox" Width="120"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ComboBoxItem Content="Keyboard"/>
+                            <ComboBoxItem Content="Pad" IsSelected="True"/>
+                        </ComboBox>
+                        <Button Width="80" Margin="5 0" Height="{Binding ActualHeight, ElementName=ControlBox}" 
+                            Visibility="{Binding Armed, Converter={StaticResource VisibilityConverter}}"
+                            VerticalContentAlignment="Center"
+                            Command="{Binding DisarmCommand}">Disarm</Button>
+                        
+                        <Button Width="80" Margin="5 0"  Height="{Binding ActualHeight, ElementName=ControlBox}"
+                            IsEnabled="{Binding JetsonConnected}"
+                            Visibility="{Binding Armed, Converter={StaticResource VisibilityReversedConverter}}" 
+                            VerticalContentAlignment="Center"
+                            Command="{Binding ArmCommand}">Arm</Button>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Center" Margin="0 5">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type CheckBox}">
+                                <Setter Property="Margin" Value="0 0 0 5"/>
+                                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+                            </Style>
+
+                        </StackPanel.Resources>
+
+                        <CheckBox Name="HUDCheckBox" Content="HUD" 
+                                  VerticalAlignment="Center" 
+                                  IsChecked="False"
+                                  IsEnabled="False"/>
+                        <!--  IsChecked="{Binding ShowHUD}"/>-->
+
+                        <Button Margin="0 5"  HorizontalAlignment="Stretch" 
+                                IsEnabled="True"
+                                Command="{Binding DetectionBtnClickedCommand}"
+                                CommandParameter="{Binding DetectionState}"
+                                Content="{Binding DetectionState, Converter={StaticResource ToggleBtnConverter}}" />
+
+                        <Button HorizontalAlignment="Stretch" IsEnabled="{Binding Armed}" Click="FullscreenBtn_Clicked"
+                                
+                                >Fullscreen</Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region SecondRow -->
+            <Grid Grid.Row="1" Margin="5" Background="{StaticResource ControlSettingsSurfaceBrush}">
+                <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" >
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 5" Background="{StaticResource ControlSettingsSurfaceBrush}">
+                        <Label Content="Velocity :" FontWeight="Bold"/>
+                        <Label Content="{Binding Velocity}" ContentStringFormat="0.00"/>
+                        <Label Content="Acceleration :" FontWeight="Bold"/>
+                            <Label Content="{Binding Acceleration}" ContentStringFormat="0.00"/>
+
+                    </StackPanel>
+                    
+                 
+                        <StackPanel Orientation="Horizontal"  Background="{StaticResource ControlSettingsSurfaceBrush}">
+                        <Label Content="Position" FontWeight="Bold"/>
+                        <Label Content="x :" Padding="0 5"/>
+                        <Label Content="{Binding Position.x}" ContentStringFormat="0.00"/>
+                        <Label Content="y :" Padding="0 5"/>
+                        <Label Content="{Binding Position.y}" ContentStringFormat="0.00"/>
+                        <Label Content="z :" Padding="0 5"/>
+                        <Label Content="{Binding Position.z}" ContentStringFormat="0.00"/>
+                    </StackPanel>
+                       
+                    </StackPanel>
+                    
+                </Grid>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region ThirdRow -->
+
+                <common:DetectionList Grid.Row="2" Margin="5" DataContext="{Binding DetectionListViewModel}" 
+                                      
+                                      Visibility="{Binding DataContext.DetectionState,
+                                      Converter={StaticResource VisibilityConverter},
+                                      RelativeSource={RelativeSource Mode=FindAncestor,
+                    AncestorType=UserControl}}"/>
+           
+            <!--#endregion-->
+        </Grid>
+
+
+        <Grid Grid.Column="1">
+        <common:CameraStream x:Name="CameraStream" 
+                             Background="{StaticResource CameraBackground}"
+                             HorizontalAlignment="Stretch" 
+                             DataContext="{Binding CameraViewModel}"  Margin="5 0 0 0"/>
+        <HUD:HUD DataContext="{Binding HUDViewModel}" Visibility="{Binding ElementName=HUDCheckBox, Path=IsChecked, Converter={StaticResource VisibilityConverter}}" Margin="5 0 0 0"/>
+        </Grid>
+    </Grid>
+</UserControl>

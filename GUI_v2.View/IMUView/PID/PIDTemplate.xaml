@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="GUI_v2.View.IMUView.PID.PIDTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_v2.View.IMUView.PID"
+             mc:Ignorable="d" 
+             Margin="5"
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource IMUSurfaceBrush}"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../IMUPageStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+       
+            
+            <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
+        <Style x:Key="PidBox" TargetType="{x:Type GroupBox}">
+            <Setter Property="BorderBrush" Value="#D5DFE5"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GroupBox}">
+                        <Grid SnapsToDevicePixels="true">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="6"/>
+                            </Grid.RowDefinitions>
+
+                            <Border BorderBrush="{TemplateBinding BorderBrush}"  BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="4" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3">
+                                <Border.OpacityMask>
+                                    <MultiBinding ConverterParameter="7" Converter="{StaticResource BorderGapMaskConverter}">
+                                        <Binding ElementName="Header" Path="ActualWidth"/>
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                    </MultiBinding>
+                                </Border.OpacityMask>
+
+                            </Border>
+                            <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Grid.Row="0" Grid.RowSpan="2">
+                                <ContentPresenter Name="header" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                            <ContentPresenter Grid.ColumnSpan="2" Grid.Column="1" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <GroupBox Margin="5" 
+              BorderBrush="{StaticResource PIDBorderBrush}" 
+              BorderThickness="{StaticResource PIDBorderThickness}" 
+              Style="{DynamicResource PidBox}">
+        <GroupBox.Header>
+            <Label Content="{Binding Header, RelativeSource={RelativeSource AncestorType=UserControl}}" Foreground="{StaticResource PIDHeaderBrush}" FontSize="{StaticResource PIDHeaderFontSize}"/>
+        </GroupBox.Header>
+
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Foreground" Value="{StaticResource PIDTextBrush}"/>
+                </Style>
+            </StackPanel.Resources>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="P:"  VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="1" Content="I:"  VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="2" Content="D:"  VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="3" Content="Level:" VerticalAlignment="Center"/>
+
+                <TextBox Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Text="{Binding PIDBank.Kp,
+                                                RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                <TextBox Grid.Column="1" Grid.Row="1"  VerticalAlignment="Center" Text="{Binding PIDBank.Ki,
+                                                RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                <TextBox Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Text="{Binding PIDBank.Kd,
+                                                RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                <TextBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="{Binding PIDBank.L,
+                                                RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+            </Grid>
+        </StackPanel>
+    </GroupBox>
+</UserControl>

@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okoń_GUI", "Okoń_GUI\Okoń_GUI.csproj", "{0967F07A-17BC-4DD5-A587-A1FFE984AFBC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC} = {CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}
+		{AAB055E5-126B-43FB-B4CC-53FB381E5601} = {AAB055E5-126B-43FB-B4CC-53FB381E5601}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{0508B10A-B24C-47CA-9632-E1F82C1E21EC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E84736F8-BE79-4C14-B00D-C82282F4DB6D} = {E84736F8-BE79-4C14-B00D-C82282F4DB6D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_v2.Model", "GUI_v2.Model\GUI_v2.Model.csproj", "{E84736F8-BE79-4C14-B00D-C82282F4DB6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_v2.View", "GUI_v2.View\GUI_v2.View.csproj", "{AAB055E5-126B-43FB-B4CC-53FB381E5601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_v2.ViewModel", "GUI_v2.ViewModel\GUI_v2.ViewModel.csproj", "{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0967F07A-17BC-4DD5-A587-A1FFE984AFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0967F07A-17BC-4DD5-A587-A1FFE984AFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0967F07A-17BC-4DD5-A587-A1FFE984AFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0967F07A-17BC-4DD5-A587-A1FFE984AFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0508B10A-B24C-47CA-9632-E1F82C1E21EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0508B10A-B24C-47CA-9632-E1F82C1E21EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0508B10A-B24C-47CA-9632-E1F82C1E21EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0508B10A-B24C-47CA-9632-E1F82C1E21EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E84736F8-BE79-4C14-B00D-C82282F4DB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E84736F8-BE79-4C14-B00D-C82282F4DB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E84736F8-BE79-4C14-B00D-C82282F4DB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E84736F8-BE79-4C14-B00D-C82282F4DB6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB055E5-126B-43FB-B4CC-53FB381E5601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB055E5-126B-43FB-B4CC-53FB381E5601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB055E5-126B-43FB-B4CC-53FB381E5601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB055E5-126B-43FB-B4CC-53FB381E5601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E57453E2-1DCA-4023-AE9C-06321429F2CA}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GUI_v2.View.style">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors2.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="SettingsDialogSurfaceBrush" Color="{StaticResource SurfaceColor}" Opacity="{StaticResource SurfaceOpacity}"/>
+    <SolidColorBrush x:Key="SettingsDialogFrameBrush" Color="{StaticResource PrimaryDarker}"/>
+    <SolidColorBrush x:Key="SettingsDialogTitleBrush" Color="{StaticResource OnBackgroundColor}"/>
+    <SolidColorBrush x:Key="SettingsDialogBackground" Color="Gray"/>
+    <SolidColorBrush x:Key="SettingsDialogOnHoverBackground" Color="{StaticResource SurfaceColor}"/>
+    <SolidColorBrush x:Key="SettingsDialogOnHoverForeground" Color="{StaticResource OnSurfaceColor}"/>
+</ResourceDictionary>

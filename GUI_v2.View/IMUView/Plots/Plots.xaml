@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="GUI_v2.View.IMUView.Plots.Plots"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_v2.View.IMUView.Plots"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource PlotBackgroundBrush}"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary Source="../IMUPageStyle.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:Plot Grid.Row="0" DataContext="{Binding AttitudePlotViewModel}" Margin="5 5 5 10" Background="{StaticResource OnBackgroundBrush}"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <local:Plot Grid.Column="1" Grid.Row="0" DataContext="{Binding AccPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+            <local:Plot Grid.Column="0" Grid.Row="0" DataContext="{Binding GyroPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+            <local:Plot Grid.Column="0" Grid.Row="1" DataContext="{Binding MagPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+            <local:Plot Grid.Column="1" Grid.Row="1" DataContext="{Binding DepthPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+        </Grid>
+    </Grid>
+</UserControl>

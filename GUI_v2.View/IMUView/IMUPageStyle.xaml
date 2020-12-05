@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+
+    <SolidColorBrush x:Key="IMUSurfaceBrush" Color="{StaticResource SurfaceColor}" Opacity="{StaticResource SurfaceOpacity}"/>
+    <SolidColorBrush x:Key="OnBackgroundBrush" Color="{StaticResource PrimaryColor}" Opacity="{StaticResource OnBackgroundOpacity}"/>
+    <SolidColorBrush x:Key="PIDBackgroundBrush" Color="{StaticResource PrimaryColor}" Opacity="{StaticResource OnBackgroundOpacity}"/>
+    <SolidColorBrush x:Key="PIDBorderBrush" Color="{StaticResource SecondaryColor}" Opacity="1"/>
+    <SolidColorBrush x:Key="PIDHeaderBrush" Color="{StaticResource OnSurfaceColor}"/>
+    <SolidColorBrush x:Key="PIDTextBrush"  Color="{StaticResource OnSurfaceColor}" Opacity="0.7"/>
+    <sys:Double x:Key="PIDHeaderFontSize">15</sys:Double>
+    <Thickness  x:Key="PIDBorderThickness">0</Thickness>
+    
+
+    <SolidColorBrush x:Key="PloTitleBrush" Color="{StaticResource SurfaceColor}"/>
+    <SolidColorBrush x:Key="PlotBackgroundBrush" Color="{StaticResource PrimaryColor}"  Opacity="{StaticResource OnBackgroundOpacity}"/>
+    <SolidColorBrush x:Key="PlotHeaderBrush" Color="{StaticResource OnSurfaceColor}"/>
+
+    <SolidColorBrush x:Key="MovementInfoBackgroundBrush" Color="{StaticResource PrimaryColor}" Opacity="{StaticResource OnBackgroundOpacity}"/>
+    <SolidColorBrush x:Key="MovementInfoBorderBrush" Color="{StaticResource SecondaryColor}" Opacity="1"/>
+    <SolidColorBrush x:Key="MovementInfoHeaderBrush" Color="{StaticResource OnSurfaceColor}"/>
+    <SolidColorBrush x:Key="MovementInfoTextBrush"  Color="{StaticResource OnSurfaceColor}" Opacity="0.7"/>
+    
+    <SolidColorBrush x:Key="CameraBackground"  Color="{StaticResource PrimaryColor}" Opacity="{StaticResource OnBackgroundOpacity}"/>
+    
+    <sys:Double x:Key="MovementInfoHeaderFontSize">15</sys:Double>
+    <Thickness  x:Key="MovementInfoBorderThickness">0</Thickness>
+</ResourceDictionary>

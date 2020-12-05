@@ -1,0 +1,44 @@
+﻿<Application x:Class="Okoń_GUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Okoń_GUI"
+             xmlns:viewmodels="clr-namespace:GUI_v2.ViewModel;assembly=GUI_v2.ViewModel"
+             xmlns:views ="clr-namespace:GUI_v2.View;assembly=GUI_v2.View"
+             xmlns:SettingsDialog ="clr-namespace:Services.DialogServices.SettingsDialog;assembly=Services"
+             Exit="Application_Exit">
+    
+    <Application.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries >
+                <ResourceDictionary Source="./style/mainTheme.xaml"/>
+            <ResourceDictionary Source="./style/ControlsStyle.xaml"/>
+                
+        </ResourceDictionary.MergedDictionaries>
+
+        <DataTemplate DataType="{x:Type viewmodels:IMUViewModel}">
+                <views:IMUPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:AutonomyViewModel}">
+                <views:AutonomyPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:StatusViewModel}">
+            <views:StatusPage/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:ControlViewModel}">
+            <views:ControlPage/>
+        </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type SettingsDialog:SettingsDialogViewModel}">
+                <SettingsDialog:SettingsDialogView></SettingsDialog:SettingsDialogView>
+            </DataTemplate>
+   
+            <BitmapImage x:Key="LoadingImaqge" UriSource="Images/okonLogo/OKON_LOGO_grey.png"/>
+            <BitmapImage x:Key="OkonLogo" UriSource="Images/okonLogo/OKON_LOGO_grey.png" />
+            <BitmapImage x:Key="KNRLogo" UriSource="Images/KNR_logo.png" />
+        <BitmapImage x:Key="Icon" UriSource="Images/okonLogo/okon_easy1.png" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

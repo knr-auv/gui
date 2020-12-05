@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="GUI_v2.View.IMUView.MovementInfo.MovementInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_v2.View.IMUView.MovementInfo"
+             mc:Ignorable="d" 
+             Margin="5"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary Source="../IMUPageStyle.xaml"/>
+    </UserControl.Resources>
+<Grid Background="{StaticResource MovementInfoBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <local:InfoTemplate Grid.Column="0" Header="Position" InfoBank="{Binding Position}"/>
+        <local:InfoTemplate Grid.Column="1" Header="Velocity" InfoBank="{Binding Velocity}"/>
+        <local:InfoTemplate Grid.Column="2" Header="Acceleration" InfoBank="{Binding Acceleration}"/>
+
+    </Grid>
+</UserControl>

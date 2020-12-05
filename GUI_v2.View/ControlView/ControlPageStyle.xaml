@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <SolidColorBrush x:Key="ControlSettingsBackground" Color="{StaticResource PrimaryColor}" Opacity="{StaticResource OnBackgroundOpacity}"/>
+    <SolidColorBrush x:Key="ControlSettingsSurfaceBrush" Color="{StaticResource SurfaceColor}" Opacity="{StaticResource SurfaceOpacity}"/>
+    <SolidColorBrush x:Key="CameraBackground" Color="{StaticResource PrimaryColor}" Opacity="{StaticResource OnBackgroundOpacity}"/>
+</ResourceDictionary>
