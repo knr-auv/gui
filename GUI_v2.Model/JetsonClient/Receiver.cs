@@ -58,7 +58,7 @@ namespace GUI_v2.Model.JetsonClient
                         if (rx_state == HEADER)
                         {
                             ReadAllFromStream(stream, header_buffer, 4);
-                            msg_length = BitConverter.ToInt32(header_buffer, 0);
+                            msg_length = BitConverter.ToInt32(header_buffer, 0);                        
                             rx_state = DATA;
                         }else if (rx_state == DATA)
                         {

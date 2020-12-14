@@ -24,8 +24,9 @@ namespace GUI_v2.ViewModel.Common
             //   CurrentImage = ImageHelpers.BytesToBitmapImage(frame);
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
-              
-                CurrentImage = ImageHelpers.BytesToBitmapImage(frame);
+              var temp = ImageHelpers.BytesToBitmapImage(frame);
+                if (temp != null)
+                    CurrentImage = temp; 
               
 
             }), DispatcherPriority.Render);

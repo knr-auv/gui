@@ -144,7 +144,7 @@ namespace GUI_v2.Model
                     return;
                 var l = stream.Read(buffer, 0, 4);
                 int lenght = BitConverter.ToInt32(buffer, 0);
-                _frame = new byte[lenght + chunkSize - lenght % chunkSize];
+                _frame = new byte[lenght + chunkSize];// - lenght % chunkSize];
                 int receivedBytes = 0;
                 int chunk;
                 while (receivedBytes < lenght)

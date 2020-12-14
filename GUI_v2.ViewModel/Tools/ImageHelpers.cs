@@ -30,10 +30,18 @@ namespace GUI_v2.Tools
         {
             Stream ms = new MemoryStream(data);
             BitmapImage img = new BitmapImage();
-            img.BeginInit();
-            img.StreamSource = ms;
-            img.EndInit();
-            return img;
+            try
+            {
+                img.BeginInit();
+                img.StreamSource = ms;
+                img.EndInit();
+                return img;
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
 
