@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using GUI_v2.View;
 using GUI_v2.ViewModel;
+
+
 namespace Okoń_GUI
 {
     /// <summary>
@@ -19,13 +21,19 @@ namespace Okoń_GUI
     {
         private ModelContainer modelContainer;
 
+       private void toFile(string msg)
+        {
+            System.IO.File.AppendAllText("log.txt", msg);
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             base.OnStartup(e);
             LoadingWindow loadingWindow = new LoadingWindow();
             loadingWindow.Show();
             ModelLoader loader = new ModelLoader(loadingWindow);
+
             Task.Factory.StartNew(() =>
             {
                 loader.LoadUserSettings();
@@ -44,6 +52,12 @@ namespace Okoń_GUI
                 });
             });
 
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            toFile(e.ExceptionObject.ToString());
+            
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
