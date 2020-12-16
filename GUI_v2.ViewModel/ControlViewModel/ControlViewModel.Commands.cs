@@ -29,9 +29,11 @@ namespace GUI_v2.ViewModel
                 modelContainer.dataContainer.Position.newDataCallback += Position.UpdateInfo;
 
                 modelContainer.dataContainer.detections.newDetectionsCallback += DetectionListViewModel.HandleNewDetection;
+                modelContainer.jetsonClient.StartDetections();
             }
             else
             {
+                modelContainer.jetsonClient.StopDetections();
                 //   modelContainer.jetsonClient.callbacks.IMUDataCallback -= (double[] data) => Velocity.UpdateInfo(data[9], data[10], data[11]);
                 modelContainer.dataContainer.Position.newDataCallback -= Position.UpdateInfo;
                 modelContainer.dataContainer.detections.newDetectionsCallback -= DetectionListViewModel.HandleNewDetection;

@@ -29,7 +29,9 @@ namespace GUI_v2.Model.JetsonClient
             DISARM = 0x02,
             START_AUTONOMY = 0x03,
             STOP_AUTONOMY =0x04,
-            START_TELEMETRY = 0x05
+            START_TELEMETRY = 0x05,
+            START_DETECTOR = 0x06,
+            STOP_DETECTOR = 0x07
         }
         public enum SETTINGS_MSG : byte
         {
@@ -61,7 +63,9 @@ namespace GUI_v2.Model.JetsonClient
         {
             DETECTION = 0x01,
             AUTONOMY_STARTED = 0x02,
-            AUTONOMY_STOPED = 0x03
+            AUTONOMY_STOPED = 0x03,
+            DETECTOR_STARTED = 0x04,
+            DETECTOR_STOPED = 0x05
         }
         public enum STATUS_MSG : byte
         {

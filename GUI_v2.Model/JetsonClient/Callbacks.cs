@@ -18,6 +18,8 @@ namespace GUI_v2.Model.JetsonClient
         public Confirm DisarmConfirmation;
         public Confirm AutonomyStarted;
         public Confirm AutonomyStoped;
+        public Confirm DetectorStarted;
+        public Confirm DetectorStoped;
         //attitude, gyro
         public Data  IMUDataCallback;
         public Data MovementInfoCallback;

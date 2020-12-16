@@ -86,10 +86,6 @@ namespace GUI_v2.Model.JetsonClient
             else if (mode == "stable")
                 sender?.SendSteering(TO_JETSON.STEERING_MSG.MODE_STABLE, null);
         }
-        public void StartDetections()
-        {
-
-        }
 
         public void SendPIDs(double[] data)
         {
@@ -134,6 +130,14 @@ namespace GUI_v2.Model.JetsonClient
         public void StartAutonomy()
         {
             sender?.SendControl(TO_JETSON.CONTROL_MSG.START_AUTONOMY);
+        }
+        public void StartDetections()
+        {
+            sender?.SendControl(TO_JETSON.CONTROL_MSG.START_DETECTOR);
+        }
+        public void StopDetections()
+        {
+            sender?.SendControl(TO_JETSON.CONTROL_MSG.STOP_DETECTOR);
         }
     }
 }

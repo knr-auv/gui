@@ -56,6 +56,12 @@ namespace GUI_v2.Model.JetsonClient
                 case FROM_JETSON.AUTONOMY_MSG.AUTONOMY_STOPED:
                     cb.AutonomyStoped?.Invoke();
                     break;
+                case FROM_JETSON.AUTONOMY_MSG.DETECTOR_STARTED:
+                    cb.DetectorStarted?.Invoke();
+                    break;
+                case FROM_JETSON.AUTONOMY_MSG.DETECTOR_STOPED:
+                    cb.DetectorStoped?.Invoke();
+                    break;
             }
 
 

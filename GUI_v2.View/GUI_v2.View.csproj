@@ -263,7 +263,6 @@
     <Compile Include="MenuBar\MenuBarButton.xaml.cs">
       <DependentUpon>MenuBarButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModelLoader.cs" />
     <Compile Include="StatusView\Boat3DView.xaml.cs">
       <DependentUpon>Boat3DView.xaml</DependentUpon>
     </Compile>

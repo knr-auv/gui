@@ -15,7 +15,14 @@ namespace GUI_v2.Model.Status
         public delegate void Callback(bool value);
         public Callback ArmCallback;
         public Callback AutonomyStatusCallback;
+        public Callback DetectorStatusCallback;
+        private bool _detectorRunning = false;
         private bool _autonomyRunning = false;
+        public bool DetectorRunning
+        {
+            get { return _detectorRunning; }
+            set { _detectorRunning = value; DetectorStatusCallback?.Invoke(value); }
+        }
         public bool AutonomyRunning
         {
             get { return _autonomyRunning; }

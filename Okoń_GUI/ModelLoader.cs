@@ -51,7 +51,10 @@ namespace GUI_v2.View
             modelContainer.jetsonClient.callbacks.taskManagerMsgCallback += modelContainer.modelStatus.taskManagerStatus.HandleNewData;
             modelContainer.jetsonClient.callbacks.DetectionCallback += modelContainer.dataContainer.detections.HandleNewDetections;
             modelContainer.dataContainer.Position.newDataCallback += modelContainer.dataContainer.detections.HandleNewPosition;
-        }
+            modelContainer.jetsonClient.callbacks.DetectorStarted += () => modelContainer.modelStatus.DetectorRunning = true;
+            modelContainer.jetsonClient.callbacks.DetectorStoped += () => modelContainer.modelStatus.DetectorRunning = false;
+            modelContainer.jetsonClient.ConnectionStatusChnaged += (bool val) => {if(!val) modelContainer.modelStatus.DetectorRunning = val; };
+            }
         public ModelContainer GetModelConatiner()
         {
             return modelContainer;

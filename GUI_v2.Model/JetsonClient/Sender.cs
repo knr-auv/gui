@@ -74,6 +74,15 @@ namespace GUI_v2.Model.JetsonClient
                     data = new byte[1];
                     data[0] = (byte)TO_JETSON.CONTROL_MSG.START_TELEMETRY;
                     break;
+                case TO_JETSON.CONTROL_MSG.START_DETECTOR:
+                    data = new byte[1];
+                    data[0] = (byte)TO_JETSON.CONTROL_MSG.START_DETECTOR;
+                    break;
+                case TO_JETSON.CONTROL_MSG.STOP_DETECTOR:
+                    data = new byte[1];
+                    data[0] = (byte)TO_JETSON.CONTROL_MSG.STOP_DETECTOR;
+                    break;
+
                 default:
                     data = null;
                     break;

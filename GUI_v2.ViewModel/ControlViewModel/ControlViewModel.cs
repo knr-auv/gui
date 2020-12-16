@@ -42,6 +42,7 @@ namespace GUI_v2.ViewModel
             modelContainer.modelStatus.ArmCallback += (bool value) => { Armed = value; };
             modelContainer.modelStatus.networkStatus.ConnectedToJetsonCallback += (bool value) => { JetsonConnected = value; };
             modelContainer.modelStatus.networkStatus.CameraStreamConnectedCallback += CameraStreamStatusChangedCallback;
+            modelContainer.modelStatus.DetectorStatusCallback += (bool val) => DetectionState = val;
 
         }
 
