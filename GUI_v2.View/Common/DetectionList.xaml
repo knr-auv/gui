@@ -24,10 +24,10 @@
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="0 5 0 5" Background="{StaticResource SurfaceBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
             <Label Content="Object List" HorizontalAlignment="Stretch"/>
             <Grid Grid.Row="1">
@@ -37,19 +37,20 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                   
+
 
                     <ListView Grid.Row="1"
                  ItemsSource="{Binding ObjectList}" 
                   Background="Transparent" BorderThickness="0" Margin="-5" Padding="0">
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListBoxItem}">
+                            <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Background" Value="Transparent" />
                                 <Setter Property="BorderBrush" Value="Transparent"/>
                                 <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                 <Setter Property="Template">
                                     <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
                                             <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                                                 <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
                                             </Border>
@@ -70,25 +71,25 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
- 
+
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Content="{Binding type}" HorizontalAlignment="Left" Margin="0 0 5 0" FontWeight="Bold"/>
-                          
-                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Label Content="x :" Padding="0 5"/>
-                                            <Label Content="{Binding x}" ContentStringFormat="0.00"/>
-                                            <Label Content="y :" Padding="0 5"/>
-                                            <Label Content="{Binding y}" ContentStringFormat="0.00"/>
-                                            <Label Content="z :" Padding="0 5"/>
-                                            <Label Content="{Binding z}" ContentStringFormat="0.00"/>
-                                        </StackPanel>
-                              
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="x :" Padding="0 5"/>
+                                        <Label Content="{Binding position[0]}" ContentStringFormat="0.00"/>
+                                        <Label Content="y :" Padding="0 5"/>
+                                        <Label Content="{Binding position[1]}" ContentStringFormat="0.00"/>
+                                        <Label Content="z :" Padding="0 5"/>
+                                        <Label Content="{Binding position[2]}" ContentStringFormat="0.00"/>
+                                    </StackPanel>
+
                                     <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
                                         <Label Grid.Column="2" Content="Dist :"/>
                                         <Label Grid.Column="2" Content="{Binding distance}" ContentStringFormat="0.00" Padding="2 5"/>
                                         <Label Content="m" Padding="0 5 5 5"/>
                                     </StackPanel>
-                                    
+
 
                                 </Grid>
                             </DataTemplate>
@@ -99,86 +100,7 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2" Margin="0 5" Background="{StaticResource SurfaceBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Label Content="Last Detections" HorizontalAlignment="Stretch"/>
-            <Grid Grid.Row="1">
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-      
-
-                    <ListView  Grid.Row="1"
-                 ItemsSource="{Binding CurrentDetections}" 
-                               IsSynchronizedWithCurrentItem="True"
-                  Background="Transparent" BorderThickness="0" Padding="0">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListBoxItem}">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                            <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                                                <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid   Background="{StaticResource SurfaceBrush}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="{Binding type}" HorizontalAlignment="Left" Margin="0 0 5 0" FontWeight="Bold"/>
-                                    <Grid Grid.Column="1">
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Label Content="x :" Padding="0 5"/>
-                                            <Label Content="{Binding x}" ContentStringFormat="0.00"/>
-                                            <Label Content="y :" Padding="0 5"/>
-                                            <Label Content="{Binding y}" ContentStringFormat="0.00"/>
-                                            <Label Content="z :" Padding="0 5"/>
-                                            <Label Content="{Binding z}" ContentStringFormat="0.00"/>
-                                        </StackPanel>
-                                    </Grid>
-                                    <StackPanel Grid.Column="2" Orientation="Horizontal">
-                                        <Label Grid.Column="2" Content="Dist :"/>
-                                        <Label Grid.Column="2" Content="{Binding distance}" ContentStringFormat="0.00" Padding="2 5"/>
-                                        <Label Content="m" Padding="0 5"/>
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="3" Orientation="Horizontal">
-                                        <Label Content="Acc: "/>
-                                        <Label Grid.Column="3" Content="{Binding accuracy}" ContentStringFormat="0.00" Padding="2 5"/>
-                                        <Label Content="%" Padding="0 5"/>
-                                    </StackPanel>
-
-                                    
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                </Grid>
-            </Grid>
+        
         </Grid>
-    </Grid>
+
 </UserControl>

@@ -8,9 +8,12 @@
              Exit="Application_Exit">
     
     <Application.Resources>
+
         <ResourceDictionary >
+ 
             <ResourceDictionary.MergedDictionaries >
                 <ResourceDictionary Source="./style/mainTheme.xaml"/>
+                
             <ResourceDictionary Source="./style/ControlsStyle.xaml"/>
                 
         </ResourceDictionary.MergedDictionaries>
@@ -39,6 +42,8 @@
             <BitmapImage x:Key="OkonLogo" UriSource="Images/okonLogo/OKON_LOGO_grey.png" />
             <BitmapImage x:Key="KNRLogo" UriSource="Images/KNR_logo.png" />
         <BitmapImage x:Key="Icon" UriSource="Images/okonLogo/okon_easy1.png" />
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

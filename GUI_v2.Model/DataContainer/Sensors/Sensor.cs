@@ -8,44 +8,44 @@ namespace GUI_v2.Model.DataContainer.Sensors
 {
     public class Sensor
     {
-        private double _x =0;
-        private double _y = 0;
-        private double _z = 0;
-        private double _norm = 0;
+        private float _x =0;
+        private float _y = 0;
+        private float _z = 0;
+        private float _norm = 0;
 
-        public double norm
+        public float norm
         {
             get { return _norm; }
             set { _norm = value; }
         }
-        public double x
+        public float x
         {
             get { return _x; }
             set { _x = value; }
         }
 
-        public double y
+        public float y
         {
             get { return _y; }
             set { _y = value; }
         }
-        public double z
+        public float z
         {
             get { return _z; }
             set { _z = value; }
         }
 
         
-        public delegate void NewDataCallback(double x, double y, double z);
+        public delegate void NewDataCallback(float x, float y, float z);
         public NewDataCallback newDataCallback;
-        public delegate void Cb(double x);
+        public delegate void Cb(float x);
         public Cb newNormCallback;
-        public void UpdateData(double X, double Y, double Z)
+        public void UpdateData(float X, float Y, float Z)
         {
             x = X;
             y = Y;
             z = Z;
-            norm = Math.Sqrt(x * x + y * y + z * z);
+            norm = (float)Math.Sqrt(x * x + y * y + z * z);
             newDataCallback?.Invoke(x, y, z);
             newNormCallback?.Invoke(norm);
         }

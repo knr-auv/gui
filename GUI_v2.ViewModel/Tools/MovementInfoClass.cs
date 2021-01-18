@@ -9,24 +9,24 @@ namespace GUI_v2.Tools
 {
     public class MovementInfoClass:BaseViewModel
     {
-        public void UpdateInfo(double X, double Y, double Z)
+        public void UpdateInfo(float X, float Y, float Z)
         {
             x = X;y = Y;z = Z;
         }
-        private double _x = 0;
-        public double x
+        private float _x = 0;
+        public float x
         {
             get { return _x; }
             set { SetProperty(ref _x, value); }
         }
-        private double _y = 0;
-        public double y
+        private float _y = 0;
+        public float y
         {
             get { return _y; }
             set { SetProperty(ref _y, value); }
         }
-        private double _z = 0;
-        public double z
+        private float _z = 0;
+        public float z
         {
             get { return _z; }
             set { SetProperty(ref _z, value); }

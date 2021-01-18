@@ -72,6 +72,7 @@
     <Compile Include="AutonomyViewModel\AutonomyViewModel.cs" />
     <Compile Include="AutonomyViewModel\AutonomyViewModel.Properties.cs" />
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="Common\DetectionDrawerViewModel.cs" />
     <Compile Include="Common\LoggerViewModel.cs" />
     <Compile Include="ControlViewModel\ControlViewModel.Commands.cs" />
     <Compile Include="ControlViewModel\ControlViewModel.Properties.cs" />

@@ -20,36 +20,38 @@ namespace GUI_v2.ViewModel.Common
             get { return modelContainer.dataContainer.detections.FPS; }
             set {; }
         }
+        private ObservableCollection<Detection> _ObjectList;
         public ObservableCollection<Detection> ObjectList { 
             get 
-            { 
-                if (modelContainer.dataContainer.detections.ObjectList != null)
-                    return new ObservableCollection<Detection>(modelContainer.dataContainer.detections.ObjectList);
-                else 
-                    return new ObservableCollection<Detection>();
+            {
+                PrepareToView();
+                return _ObjectList;
                 } 
             set { } }
-        public ObservableCollection<Detection> CurrentDetections { get {
-                if (modelContainer.dataContainer.detections.LastDetectionList != null)
-                    return new ObservableCollection<Detection>(modelContainer.dataContainer.detections.LastDetectionList);
-                else
-                    return new ObservableCollection<Detection>();
+
+
+        public void PrepareToView()
+        {
+            _ObjectList.Clear();
+            foreach (var i in modelContainer.dataContainer.detections.ObjectList)
+            {
+                _ObjectList.Add(i);
             }
-            set { }
         }
 
         public void HandleNewDetection()
         {
             RaisePropertyChanged("FPS");
             RaisePropertyChanged("ObjectList");
-            RaisePropertyChanged("CurrentDetections");
         }
 
+       
 
 
         public DetectionListViewModel(ModelContainer modelContainer)
         {
             this.modelContainer = modelContainer;
+            _ObjectList = new ObservableCollection<Detection>();
 
         }
 

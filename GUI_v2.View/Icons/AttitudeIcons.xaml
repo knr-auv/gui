@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="./AttitudeIcons/ShieldIcon.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+        
+        <BitmapImage x:Key="OkonTop" UriSource="AttitudeIcons/okon_top.png"/>
+    <BitmapImage x:Key="OkonSide" UriSource="AttitudeIcons/okon_side.png"/>
+    <BitmapImage x:Key="RollArrow" UriSource="AttitudeIcons/RollArrow.png"/>
+    <BitmapImage x:Key="PitchArrow" UriSource="AttitudeIcons/PitchArrow.png"/>
+    <BitmapImage x:Key="HeadingArrow" UriSource="AttitudeIcons/HeadingArrow.png"/>
+
+
+</ResourceDictionary>

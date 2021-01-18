@@ -5,9 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_v2.View.AutonomyView"
              mc:Ignorable="d" 
+             xmlns:common="clr-namespace:GUI_v2.View.Common"
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <ResourceDictionary Source="AutonomyPageStyle.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="AutonomyPageStyle.xaml"/>
+                <ResourceDictionary  Source="../Icons/AttitudeIcons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <sys:Double x:Key="radius">80</sys:Double>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid Margin="5">
@@ -46,12 +54,181 @@
             </StackPanel>
         </Grid>
         <!--#endregion-->
-        
-        
-        
+
+
+
         <!--#region ThirdElement -->
         <Grid Grid.Column="1" Background="{StaticResource SurfaceBrush}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5 0 0 0">
-            <Label Content="Motors info + attitude" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <sys:Double x:Key="ShieldOpacity">0.3</sys:Double>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <StackPanel Orientation="Horizontal" Width="Auto" Grid.Column="0" HorizontalAlignment="Center">
+                <!--#region roll -->
+                <Grid Margin="5">
+                    <StackPanel>
+
+                        <Grid>
+                    <Ellipse 
+                    Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}">
+                        <Ellipse.Fill>
+                                    <SolidColorBrush Color="{StaticResource SecondaryColor}" Opacity="{StaticResource ShieldOpacity}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse 
+                 Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource ShieldIcon}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse 
+         Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}"
+                        
+                        RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource RollArrow}"/>
+                        </Ellipse.Fill>
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="{Binding Roll}"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+
+                    </Ellipse>
+                    </Grid>
+                    </StackPanel>
+                </Grid>
+                <!--#endregion-->
+                <!--#region Pitch -->
+                <Grid Margin="5">
+                    <StackPanel>
+
+                        <Grid>
+                            <Ellipse 
+                            Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}">
+                        <Ellipse.Fill>
+                                    <SolidColorBrush Color="{StaticResource SecondaryColor}" Opacity="{StaticResource ShieldOpacity}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse 
+                         Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource ShieldIcon}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse 
+                             Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}"
+                        RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource PitchArrow}"/>
+                        </Ellipse.Fill>
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="{Binding Pitch}"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+
+                    </Ellipse>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <!--#endregion-->
+                <!--#region Heading -->
+                <Grid Margin="5">
+                            <StackPanel>
+     
+                                <Grid>
+                                    <Ellipse 
+                  Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}">
+                        <Ellipse.Fill>
+                                    <SolidColorBrush Color="{StaticResource SecondaryColor}" Opacity="{StaticResource ShieldOpacity}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse 
+                    Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource ShieldIcon}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse 
+                    Height="{StaticResource radius}"                   
+                    Width="{StaticResource radius}"
+                        RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{StaticResource HeadingArrow}"/>
+                        </Ellipse.Fill>
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="{Binding Heading}"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+
+                    </Ellipse>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <!--#endregion-->
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Bottom"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="Foreground">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{StaticResource PrimaryColor}" Opacity="1"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <Grid>
+                    <common:MotorBar Margin="5" MotorValue="{Binding MotorsData[0]}"/>
+                    <Label Content="1"/>
+                </Grid>
+                <Grid>
+                    <common:MotorBar Margin="5" MotorValue="{Binding MotorsData[1]}"/>
+                    <Label Content="2"/>
+                </Grid>
+                <Grid>
+                    <common:MotorBar Margin="5" MotorValue="{Binding MotorsData[2]}"/>
+                    <Label Content="3"/>
+                </Grid>
+                <Grid>
+                    <common:MotorBar Margin="5" MotorValue="{Binding MotorsData[3]}"/>
+                    <Label Content="4"/>
+                </Grid>
+                <Grid>
+                    <common:MotorBar Margin="5" MotorValue="{Binding MotorsData[4]}"/>
+                    <Label Content="5"/>
+                </Grid>
+              
+                </StackPanel>
+            
+
         </Grid>
         <!--#endregion-->
     </Grid>

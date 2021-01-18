@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:GUI_v2.View.Icons">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <BitmapImage x:Key="ControlImage" UriSource="MenuBarIcons/control_icon.png"/>
     <BitmapImage x:Key="IMUImage" UriSource="MenuBarIcons/pid_icon_grey.png"/>
     <BitmapImage x:Key="StatusImage" UriSource="MenuBarIcons/setup_icon_grey.png"/>

@@ -11,7 +11,7 @@ namespace GUI_v2.Model.JetsonClient
         public delegate void Confirm();
         public delegate void TextData(string var);
         public delegate void ConfirmValue(bool val);
-        public delegate void Data(double[] data);
+        public delegate void Data(float[] data);
         public delegate void Detection(string detection);
 
         public Confirm ArmConfirmation;
@@ -20,6 +20,7 @@ namespace GUI_v2.Model.JetsonClient
         public Confirm AutonomyStoped;
         public Confirm DetectorStarted;
         public Confirm DetectorStoped;
+        public Data MotorsDataCallback;
         //attitude, gyro
         public Data  IMUDataCallback;
         public Data MovementInfoCallback;

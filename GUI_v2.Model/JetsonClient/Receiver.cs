@@ -39,7 +39,7 @@ namespace GUI_v2.Model.JetsonClient
         void ReadAllFromStream(NetworkStream stream, byte[] buffer, int len)
         {
             int current = 0;
-            while (current < buffer.Length)
+            while (current < buffer.Length && current < len)
                 current += stream.Read(buffer, current, len - current > buffer.Length ? buffer.Length : len - current);
         }
         private readonly byte[] header_buffer =new byte[4];

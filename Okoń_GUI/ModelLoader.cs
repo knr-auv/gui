@@ -29,7 +29,7 @@ namespace GUI_v2.View
             modelContainer.jetsonClient.callbacks.ArmConfirmation += () => { modelContainer.modelStatus.Armed = true; };
             modelContainer.jetsonClient.callbacks.DisarmConfirmation += () => { modelContainer.modelStatus.Armed = false; };
             modelContainer.cameraStreamClient.ConnectionStatusChanged += (bool val)=>{ modelContainer.modelStatus.networkStatus.CameraStreamConnected = val; };
-            modelContainer.jetsonClient.callbacks.IMUDataCallback += (double[] data) =>
+            modelContainer.jetsonClient.callbacks.IMUDataCallback += (float[] data) =>
              {
                 //attitude, acc, gyro, mag, depth};
                 modelContainer.dataContainer.Attitude.UpdateData(data[0], data[1], data[2]);
@@ -38,22 +38,23 @@ namespace GUI_v2.View
                  modelContainer.dataContainer.Mag.UpdateData(data[9], data[10], data[11]);
                  modelContainer.dataContainer.Baro.UpdateData(data[12]);
              };
-            modelContainer.jetsonClient.callbacks.MovementInfoCallback += (double[] data)=> 
+            modelContainer.jetsonClient.callbacks.MovementInfoCallback += (float[] data)=> 
              {
                 modelContainer.dataContainer.Position.UpdateData(data[0], data[1], data[2]);
                 modelContainer.dataContainer.Velocity.UpdateData(data[3], data[4], data[5]);
                 modelContainer.dataContainer.Acceleration.UpdateData(data[6], data[7], data[8]);
              };
-            modelContainer.jetsonClient.callbacks.BatteryCallback += (double[] val) => { modelContainer.dataContainer.Battery.UpdateData(val); };
+            modelContainer.jetsonClient.callbacks.BatteryCallback += (float[] val) => { modelContainer.dataContainer.Battery.UpdateData(val); };
             modelContainer.jetsonClient.callbacks.loggerMsgCallback += (string msg) => { modelContainer.logger.HandleNewMsg(msg); };
             modelContainer.jetsonClient.callbacks.AutonomyStarted += () => modelContainer.modelStatus.AutonomyRunning = true;
             modelContainer.jetsonClient.callbacks.AutonomyStoped += () => modelContainer.modelStatus.AutonomyRunning = false;
             modelContainer.jetsonClient.callbacks.taskManagerMsgCallback += modelContainer.modelStatus.taskManagerStatus.HandleNewData;
             modelContainer.jetsonClient.callbacks.DetectionCallback += modelContainer.dataContainer.detections.HandleNewDetections;
-            modelContainer.dataContainer.Position.newDataCallback += modelContainer.dataContainer.detections.HandleNewPosition;
             modelContainer.jetsonClient.callbacks.DetectorStarted += () => modelContainer.modelStatus.DetectorRunning = true;
             modelContainer.jetsonClient.callbacks.DetectorStoped += () => modelContainer.modelStatus.DetectorRunning = false;
             modelContainer.jetsonClient.ConnectionStatusChnaged += (bool val) => {if(!val) modelContainer.modelStatus.DetectorRunning = val; };
+            modelContainer.jetsonClient.callbacks.MotorsDataCallback += (float[] data) => { modelContainer.dataContainer.motorsData.UpdateData(data); };
+
             }
         public ModelContainer GetModelConatiner()
         {

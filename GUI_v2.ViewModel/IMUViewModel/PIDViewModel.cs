@@ -28,7 +28,7 @@ namespace GUI_v2.ViewModel.IMUViewModels
         }
 
         private ModelContainer ModelContainer;
-        public void UpdatePIDS(double[] data)
+        public void UpdatePIDS(float[] data)
         {
             if (data.Length != 16) {
                 Console.WriteLine("PID data error");

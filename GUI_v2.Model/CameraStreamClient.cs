@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GUI_v2.Model
 {
+    //TODO Code review&&make it shorter
     public class CameraStreamClient
     { 
         public delegate void NewFrameCallback(Byte[] frame);
@@ -41,7 +42,6 @@ namespace GUI_v2.Model
                 ConnectionStatusChanged.Invoke(false);
                 return false;
             }
-
         }
 
         ~CameraStreamClient()
@@ -61,16 +61,26 @@ namespace GUI_v2.Model
             stream = null;
             StopStream();
         }
+        public bool IsRunning()
+        {
+            return LoopActive;
+        }
         public void StartStream(NewFrameCallback callback,  Notifyier connectionErrorCb, double fps = 45)
         {
             connectionDownCb = connectionErrorCb;
-            if (stream!=null&&LoopActive ==false)
+            if (stream != null && LoopActive == false)
             {
                 x = new Thread(() => Loop(callback, fps));
                 x.Start();
             }
+            else
+                SwapCallbacks(callback, connectionErrorCb);
         }
-
+        public void SwapCallbacks(NewFrameCallback callback, Notifyier connectionErrorCb)
+        {
+            cb = callback;
+            connectionDownCb = connectionErrorCb;
+        }
         public void StopStream()
         {
             if (x!=null&&x.IsAlive)
@@ -81,9 +91,10 @@ namespace GUI_v2.Model
             }
         }
 
-
+        NewFrameCallback cb;
         private void Loop(NewFrameCallback callback, double fps)
         {
+            cb = callback;
             try 
             {
                 LoopActive = true;
@@ -98,7 +109,7 @@ namespace GUI_v2.Model
                             isReceiving = true;
                             ReceiveFrame();
                             isReceiving = false;
-                            callback(_frame);
+                            cb(_frame);
                             
                         }
                         catch (TaskCanceledException)
@@ -134,25 +145,25 @@ namespace GUI_v2.Model
         private static readonly int chunkSize = 4096;
         private readonly byte[] buffer = new Byte[chunkSize];
         private readonly byte[] ack = { 0x69 };
-
+        void ReadAllFromStream(NetworkStream stream, byte[] buffer, int len)
+        {
+            int current = 0;
+            while (current < buffer.Length&&current<len)
+                current += stream.Read(buffer, current, len - current > buffer.Length ? buffer.Length : len - current);
+        }
         private void ReceiveFrame()
         {
             if (stream.CanRead&&stream.CanWrite)
             {
                 stream.Write(ack, 0, 1);
-                if (stream.ReadByte() != ack[0])
+                ReadAllFromStream(stream, buffer, 1);
+                if (buffer[0] != ack[0])
                     return;
-                var l = stream.Read(buffer, 0, 4);
-                int lenght = BitConverter.ToInt32(buffer, 0);
-                _frame = new byte[lenght + chunkSize];// - lenght % chunkSize];
-                int receivedBytes = 0;
-                int chunk;
-                while (receivedBytes < lenght)
-                {
-                    chunk = stream.Read(_frame, receivedBytes, chunkSize);
-                    receivedBytes += chunk;
+                    ReadAllFromStream(stream, buffer, 4);
+                    int lenght = BitConverter.ToInt32(buffer, 0);
+                    _frame = new byte[lenght + chunkSize];// - lenght % chunkSize];
+                    ReadAllFromStream(stream, _frame, lenght);
                 }
-            }
         }
     }
 }

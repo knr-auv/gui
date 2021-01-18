@@ -74,7 +74,7 @@ namespace GUI_v2.Model.JetsonClient
                 case FROM_JETSON.TELEMETRY_MSG.IMU:
                     {
                         int size = (data.Length - 2) / sizeof(float);
-                        double[] val = new double[size];
+                        float[] val = new float[size];
                         for (int i = 0; i < size; i++)
                         {
                             val[i] = BitConverter.ToSingle(data, 2 + i * sizeof(float));
@@ -87,7 +87,7 @@ namespace GUI_v2.Model.JetsonClient
                 case FROM_JETSON.TELEMETRY_MSG.MOVEMENT_INFO:
                     {
                         int size = (data.Length - 2) / sizeof(float);
-                        double[] val = new double[size];
+                        float[] val = new float[size];
                         for (int i = 0; i < size; i++)
                         {
                             val[i] = BitConverter.ToSingle(data, 2 + i * sizeof(float));
@@ -101,12 +101,23 @@ namespace GUI_v2.Model.JetsonClient
                 case FROM_JETSON.TELEMETRY_MSG.BATTERY:
                     {
                         int size = (data.Length - 2) / sizeof(float);
-                        double[] val = new double[size];
+                        float[] val = new float[size];
                         for (int i = 0; i < size; i++)
                         {
                             val[i] = BitConverter.ToSingle(data, 2 + i * sizeof(float));
                         }
                         cb?.BatteryCallback(val);
+                    }
+                    break;
+                case FROM_JETSON.TELEMETRY_MSG.MOTORS:
+                    {
+                        int size = (data.Length - 2) / sizeof(float);
+                        float[] val = new float[size];
+                        for (int i = 0; i < size; i++)
+                        {
+                            val[i] = BitConverter.ToSingle(data, 2 + i * sizeof(float));
+                        }
+                        cb?.MotorsDataCallback?.Invoke(val);
                     }
                     break;
             }
@@ -118,11 +129,11 @@ namespace GUI_v2.Model.JetsonClient
             {
                 case (byte)FROM_JETSON.REQUEST_RESPONCE_MSG.PID:
                     int size = (data.Length - 2) / sizeof(float);
-                    double[] val = new double[size];
+                    float[] val = new float[size];
                     for (int i = 0; i < size; i++)
                     {
                         val[i] = BitConverter.ToSingle(data, 2 + i * sizeof(float));
-                        val[i] = Math.Round(val[i] * 100) / 100;
+                        val[i] = (float)Math.Round(val[i] * 100) / 100;
                     }
                     cb.PIDCallback?.Invoke(val);
                     Console.WriteLine("received pids");

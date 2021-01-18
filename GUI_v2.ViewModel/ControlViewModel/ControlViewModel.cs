@@ -13,7 +13,6 @@ namespace GUI_v2.ViewModel
     {
         public override void Hide()
         {
-            modelContainer.cameraStreamClient.StopStream();
             modelContainer.dataContainer.Position.newDataCallback -= Position.UpdateInfo;
             modelContainer.dataContainer.Velocity.newNormCallback -= UpdateVelocity;
             modelContainer.dataContainer.Acceleration.newNormCallback -= UpdateAcceleration;
@@ -28,7 +27,7 @@ namespace GUI_v2.ViewModel
 
         
         public ModelContainer modelContainer;
-        
+
         public ControlViewModel(ModelContainer modelContainer)
         {
             Position = new MovementInfoClass();
@@ -36,18 +35,23 @@ namespace GUI_v2.ViewModel
             CameraViewModel = new CameraStreamViewModel();
             HUDViewModel = new HUDViewModel();
             DetectionListViewModel = new DetectionListViewModel(modelContainer);
+            DetectionDrawerViewModel = new DetectionDrawerViewModel(modelContainer);
+
             ArmCommand = new RelayCommand(ArmAction, CanArmAction);
             DisarmCommand = new RelayCommand(DisarmAction, CanDisarmAction);
             DetectionBtnClickedCommand = new RelayCommand(DetectionBtnClickedAction, (object p) => { return true; });
             modelContainer.modelStatus.ArmCallback += (bool value) => { Armed = value; };
             modelContainer.modelStatus.networkStatus.ConnectedToJetsonCallback += (bool value) => { JetsonConnected = value; };
             modelContainer.modelStatus.networkStatus.CameraStreamConnectedCallback += CameraStreamStatusChangedCallback;
-            modelContainer.modelStatus.DetectorStatusCallback += (bool val) => DetectionState = val;
-
+            modelContainer.modelStatus.DetectorStatusCallback += (bool val) =>
+            {
+                DetectionState = val;
+              
+            };
         }
 
-        private void UpdateVelocity(double x) {Velocity = x;}
-        private void UpdateAcceleration(double x) { Acceleration = x; }
+        private void UpdateVelocity(float x) {Velocity = x;}
+        private void UpdateAcceleration(float x) { Acceleration = x; }
 
         private void CameraStreamStatusChangedCallback(bool val)
         {

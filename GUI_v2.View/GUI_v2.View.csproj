@@ -210,11 +210,13 @@
     <Compile Include="Common\CameraStream.xaml.cs">
       <DependentUpon>CameraStream.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\DetectionDrawer.xaml.cs">
+      <DependentUpon>DetectionDrawer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\DetectionList.xaml.cs">
       <DependentUpon>DetectionList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\HUD\ArtificialHorizon.cs" />
-    <Compile Include="Common\HUD\DetectionBox.cs" />
     <Compile Include="Common\HUD\Heading.cs" />
     <Compile Include="Common\HUD.xaml.cs">
       <DependentUpon>HUD.xaml</DependentUpon>
@@ -222,6 +224,9 @@
     <Compile Include="Common\HUD\HUDElementBase.cs" />
     <Compile Include="Common\Logger.xaml.cs">
       <DependentUpon>Logger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\MotorBar.xaml.cs">
+      <DependentUpon>MotorBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlView\ControlPage.xaml.cs">
       <DependentUpon>ControlPage.xaml</DependentUpon>
@@ -309,6 +314,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Common\DetectionDrawer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Common\DetectionList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -321,11 +330,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Common\MotorBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlView\ControlPageStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Icons\AttitudeIcons\ShieldIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Icons\MenuBarIcons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Icons\AttitudeIcons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -560,6 +581,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\TopBarIcons\icon_connected_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\AttitudeIcons\RollArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\AttitudeIcons\HeadingArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\AttitudeIcons\PitchArrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

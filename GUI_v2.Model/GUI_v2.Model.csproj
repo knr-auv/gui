@@ -46,6 +46,7 @@
     <Compile Include="CameraStreamClient.cs" />
     <Compile Include="DataContainer\DataContainer.cs" />
     <Compile Include="DataContainer\Detections.cs" />
+    <Compile Include="DataContainer\MotorsData.cs" />
     <Compile Include="DataContainer\Sensors\BaroSensor.cs" />
     <Compile Include="DataContainer\Sensors\BatterySensor.cs" />
     <Compile Include="DataContainer\Sensors\Sensor.cs" />
@@ -72,6 +73,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>

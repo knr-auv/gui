@@ -8,11 +8,11 @@ namespace GUI_v2.Model.DataContainer.Sensors
 {
     public class BaroSensor
     {
-        private double value = 0;
-        public delegate void NewDataCallback(double value);
+        private float value = 0;
+        public delegate void NewDataCallback(float value);
         public NewDataCallback newDataCallback;
 
-        public void UpdateData(double data)
+        public void UpdateData(float data)
         {
             value = data;
             newDataCallback?.Invoke(value);

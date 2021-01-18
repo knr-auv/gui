@@ -22,7 +22,6 @@ namespace GUI_v2.ViewModel
     {
         public override void Hide()
         {
-            modelContainer.cameraStreamClient.StopStream();
             modelContainer.dataContainer.Velocity.newDataCallback -= MovementViewModel.Velocity.UpdateInfo;
             modelContainer.dataContainer.Acceleration.newDataCallback -= MovementViewModel.Acceleration.UpdateInfo;
             modelContainer.dataContainer.Position.newDataCallback -= MovementViewModel.Position.UpdateInfo;
@@ -56,11 +55,11 @@ namespace GUI_v2.ViewModel
 
             modelContainer.jetsonClient.callbacks.PIDCallback += PIDViewModel.UpdatePIDS;
             modelContainer.modelStatus.networkStatus.CameraStreamConnectedCallback += CameraStreamStatusChangedCallback;
-            modelContainer.dataContainer.Attitude.newDataCallback += (double x, double y, double z) => { double[] a = { x, y, z }; AttitudePlotViewModel.UpdatePlotData(a); };
-            modelContainer.dataContainer.Acc.newDataCallback += (double x, double y, double z) => { double[] a = { x, y, z }; AccPlotViewModel.UpdatePlotData(a); };
-            modelContainer.dataContainer.Gyro.newDataCallback += (double x, double y, double z) => { double[] a = { x, y, z }; GyroPlotViewModel.UpdatePlotData(a); };
-            modelContainer.dataContainer.Mag.newDataCallback += (double x, double y, double z) => { double[] a = { x, y, z }; MagPlotViewModel.UpdatePlotData(a); };
-            modelContainer.dataContainer.Baro.newDataCallback += (double value) => { double[] a = { value }; DepthPlotViewModel.UpdatePlotData(a); };
+            modelContainer.dataContainer.Attitude.newDataCallback += (float x, float y, float z) => { float[] a = { x, y, z }; AttitudePlotViewModel.UpdatePlotData(a); };
+            modelContainer.dataContainer.Acc.newDataCallback += (float x, float y, float z) => { float[] a = { x, y, z }; AccPlotViewModel.UpdatePlotData(a); };
+            modelContainer.dataContainer.Gyro.newDataCallback += (float x, float y, float z) => { float[] a = { x, y, z }; GyroPlotViewModel.UpdatePlotData(a); };
+            modelContainer.dataContainer.Mag.newDataCallback += (float x, float y, float z) => { float[] a = { x, y, z }; MagPlotViewModel.UpdatePlotData(a); };
+            modelContainer.dataContainer.Baro.newDataCallback += (float value) => { float[] a = { value }; DepthPlotViewModel.UpdatePlotData(a); };
 
         }
         private void CameraStreamStatusChangedCallback(bool val)

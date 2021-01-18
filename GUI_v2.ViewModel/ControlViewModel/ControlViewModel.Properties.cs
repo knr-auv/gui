@@ -61,5 +61,6 @@ namespace GUI_v2.ViewModel
         public HUDViewModel HUDViewModel { get; set; }
         public CameraStreamViewModel CameraViewModel { get; set; }
         public DetectionListViewModel DetectionListViewModel { get; set; }
+        public DetectionDrawerViewModel DetectionDrawerViewModel { get; set; }
     }
 }

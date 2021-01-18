@@ -145,6 +145,7 @@
                              HorizontalAlignment="Stretch" 
                              DataContext="{Binding CameraViewModel}"  Margin="5 0 0 0"/>
         <HUD:HUD DataContext="{Binding HUDViewModel}" Visibility="{Binding ElementName=HUDCheckBox, Path=IsChecked, Converter={StaticResource VisibilityConverter}}" Margin="5 0 0 0"/>
+        <common:DetectionDrawer BoundingBoxes="{Binding DetectionDrawerViewModel.Boxes}" Width="{Binding ActualWidth, ElementName=CameraStream}" Height="{Binding ActualHeight, ElementName=CameraStream}" Visibility="{Binding DetectionState, Converter={StaticResource VisibilityConverter}}"/>
         </Grid>
     </Grid>
 </UserControl>

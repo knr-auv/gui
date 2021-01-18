@@ -21,6 +21,6 @@ namespace GUI_v2.Model.DataContainer
         public Sensor Acceleration = new Sensor();
         public BatterySensor Battery = new BatterySensor();
         public Detections detections = new Detections();
-        
+        public MotorsData motorsData = new MotorsData();
     }
 }

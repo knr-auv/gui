@@ -14,11 +14,11 @@ namespace GUI_v2.ViewModel
 
         public override void Show()
         {
-            modelContainer.cameraStreamClient.StartStream(CameraStreamViewModel.SwapImage, CameraStreamViewModel.SetLogo);
+            modelContainer.cameraStreamClient.StartStream(CameraViewModel.SwapImage, CameraViewModel.SetLogo);
         }
         public override void Hide()
         {
-            modelContainer.cameraStreamClient.StopStream();
+
         }
         
 
@@ -26,19 +26,20 @@ namespace GUI_v2.ViewModel
         {
             modelContainer = ModelContainer;
             LoggerViewModel = new LoggerViewModel(modelContainer.logger);
-            CameraStreamViewModel = new CameraStreamViewModel();
+            CameraViewModel = new CameraStreamViewModel();
             DetectionListViewModel = new DetectionListViewModel(modelContainer);
 
 
             StartAutonomyCommand = new RelayCommand(StartAutonomyAction, Allow);
             StopAutonomyCommand = new RelayCommand(StopAutonomyAction, Allow);
-            modelContainer.dataContainer.Position.newDataCallback += (double x, double y, double z) => { RaisePropertyChanged("posX"); RaisePropertyChanged("posY"); RaisePropertyChanged("posZ"); };
-            modelContainer.dataContainer.Velocity.newNormCallback += (double x) => RaisePropertyChanged("Velocity");
-            modelContainer.dataContainer.Acceleration.newNormCallback += (double x) => RaisePropertyChanged("Acceleration");
+            modelContainer.dataContainer.Position.newDataCallback += (float x, float y, float z) => { RaisePropertyChanged("posX"); RaisePropertyChanged("posY"); RaisePropertyChanged("posZ"); };
+            modelContainer.dataContainer.Velocity.newNormCallback += (float x) => RaisePropertyChanged("Velocity");
+            modelContainer.dataContainer.Acceleration.newNormCallback += (float x) => RaisePropertyChanged("Acceleration");
             modelContainer.modelStatus.taskManagerStatus.NewData += () => RaisePropertyChanged("TaskManagerStatus");
             modelContainer.modelStatus.networkStatus.ConnectedToJetsonCallback += (bool val) => JetsonConnected = val;
             modelContainer.modelStatus.AutonomyStatusCallback += (bool val) => AutonomyStatus = val;
-            modelContainer.dataContainer.detections.newDetectionsCallback += DetectionListViewModel.HandleNewDetection;
+            modelContainer.dataContainer.Attitude.newDataCallback += (float x, float y, float z) => { Roll = x; Pitch = y; Heading = z; };
+            modelContainer.dataContainer.motorsData.newDataCallback += () => { RaisePropertyChanged("MotorsData"); };
         }
     }
 }

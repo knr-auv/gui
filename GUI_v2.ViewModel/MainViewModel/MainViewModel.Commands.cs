@@ -49,6 +49,8 @@ namespace GUI_v2.ViewModel
                           modelContainer.cameraStreamClient.StartStream(_IMUViewModel.CameraViewModel.SwapImage,_IMUViewModel.CameraViewModel.SetLogo);
                       else if (SelectedViewModel == _ControlViewModel)
                           modelContainer.cameraStreamClient.StartStream(_ControlViewModel.CameraViewModel.SwapImage, _IMUViewModel.CameraViewModel.SetLogo);
+                      else if (SelectedViewModel == _AutonomyViewModel)
+                          modelContainer.cameraStreamClient.StartStream(_AutonomyViewModel.CameraViewModel.SwapImage, _AutonomyViewModel.CameraViewModel.SetLogo);
                       //add other view if they are using stream
                   }
                   else
@@ -90,26 +92,34 @@ namespace GUI_v2.ViewModel
 
         private void ChangeViewAction(object parameter)
         {
+            //TODO Consider passing here callback for camera view model
             if (parameter.ToString() == "IMU")
             {
                 if (this.SelectedViewModel != this._IMUViewModel)
+                {
                     this.SelectedViewModel = this._IMUViewModel;
+                }
             }
             else if (parameter.ToString() == "Status")
             {
                 if (this.SelectedViewModel != this._StatusViewModel)
-
+                {
                     this.SelectedViewModel = this._StatusViewModel;
+                }
             }
             else if (parameter.ToString() == "Control")
             {
                 if (this.SelectedViewModel != this._ControlViewModel)
+                {
                     this.SelectedViewModel = this._ControlViewModel;
-            }
+                }
+                }
             else if (parameter.ToString() == "Autonomy")
             {
                 if (this.SelectedViewModel != this._AutonomyViewModel)
+                {
                     this.SelectedViewModel = this._AutonomyViewModel;
+                }
             }
             this.ShouldMenuExpand = !this.ShouldMenuExpand;
         }

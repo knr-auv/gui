@@ -2,92 +2,111 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace PC_GUI_v2.Model.DataContainer
 {
     public class Detection
     {
-        private double _x = 0;
-        private double _y = 0;
-        private double _z = 0;
-        private double _distance = 0;
-        private double _accuracy = 0;
         private string _type = "None";
-
-        public double x
-        {
-            get => _x;
-            set => _x=value;
-        }
-        public double y
-        {
-            get => _y;
-            set => _y = value;
-        }
-        public double z
-        {
-            get => _z;
-            set => _z = value;
-        }
-        public double distance
-        {
-            get => _distance;
-            set => _distance = value;
-        }
-        public double accuracy
-        {
-            get => _accuracy;
-            set => _accuracy = value;
-        }
+        private int _index = 0;
+        private float _accuracy = 0;
+        private float[] _boundingBox;
+        private float[] _position;
+        private float _angle = 0;
+        private float _distance = 0;
+        private float _width = 0;
+        private float _height = 0;
         public string type
         {
             get => _type;
             set => _type = value;
         }
-
-
-        public void UpdateDistance(double x, double y, double z)
+        public int index
         {
-            double tx = this.x - x;
-            double ty = this.y - y;
-            double tz = this.z - z;
-            distance = Math.Sqrt(tx * tx + ty * ty + tz * tz);
+            get => _index;
+            set => _index = value;
+        }
+        public float accuracy
+        {
+            get => _accuracy;
+            set => _accuracy = value;
+        }
+        public float[] boundingBox
+        {
+            get => _boundingBox;
+            set => _boundingBox = value;
+        }
+        public float[] position
+        {
+            get => _position;
+            set => _position = value;
+        }
+        public float angle
+        {
+            get => _angle;
+            set => _angle = value;
+        }
+
+        public float distance
+        {
+            get => _distance;
+            set => _distance = value;
+        }
+
+        public float width
+        {
+            get => _width;
+            set => _width = value;
+        }
+        public float height
+        {
+            get => _height;
+            set => _height = value;
         }
     }
 
     public class Detections
     {
-        public double FPS = 0;
-        public List<Detection> ObjectList =new List<Detection>();
-        public List<Detection> LastDetectionList = new List<Detection>();
+        public float FPS = 0;
+        public List<Detection> ObjectList = new List<Detection>();
+
         public delegate void NewDetectionsCallback();
         public NewDetectionsCallback newDetectionsCallback;
-        
+        public delegate void BoundingBoxCallback(List<float[]> boxList);
+        public BoundingBoxCallback boundingBoxCallback;
+
         private class helper
         {
-            public double fps;
+            public float fps;
             public List<Detection> ObjectsList;
-            public List<Detection> LastDetections;
         }
         public void HandleNewDetections(string detection)
         {
             helper a = JsonConvert.DeserializeObject<helper>(detection);
             ObjectList = a.ObjectsList;
-            LastDetectionList = a.LastDetections;
             FPS = a.fps;
             newDetectionsCallback?.Invoke();
+            boundingBoxCallback?.Invoke(PrepareBoundingBoxes());
         }
-        public void HandleNewPosition(double x, double y, double z)
+        private List<float[]> PrepareBoundingBoxes()
         {
-            if(ObjectList!=null)
-            foreach (var i in ObjectList)
-                i.UpdateDistance(x,y,z);
-            if(LastDetectionList!=null)
-            foreach (var i in LastDetectionList)
-                i.UpdateDistance(x,y,z);
-            newDetectionsCallback?.Invoke();
+            List<float[]> boxList = new List<float[]>();
+
+            foreach (var obj in ObjectList)
+            {
+                if (obj.boundingBox != null)
+                    boxList.Add(obj.boundingBox);
+            }
+
+            return boxList;
         }
+
+
+
     }
 }
+

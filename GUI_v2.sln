@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_v2.View", "GUI_v2.View\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_v2.ViewModel", "GUI_v2.ViewModel\GUI_v2.ViewModel.csproj", "{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{46C80AA0-C33C-4E85-832B-FDC6E1DA2B25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCE79492-5C56-4D61-9D8D-C6C135AAC0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C80AA0-C33C-4E85-832B-FDC6E1DA2B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C80AA0-C33C-4E85-832B-FDC6E1DA2B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C80AA0-C33C-4E85-832B-FDC6E1DA2B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C80AA0-C33C-4E85-832B-FDC6E1DA2B25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

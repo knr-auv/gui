@@ -8,12 +8,12 @@ namespace GUI_v2.Model.DataContainer.Sensors
 {
     public class BatterySensor
     {
-        private double bat1 = 0;
-        private double bat2 = 0;
+        private float bat1 = 0;
+        private float bat2 = 0;
 
-        public delegate void NewDataCallback(double bat1, double bat2);
+        public delegate void NewDataCallback(float bat1, float bat2);
         public NewDataCallback newDataCallback;
-        public void UpdateData(double[] data)
+        public void UpdateData(float[] data)
         {
             bat1 = data[0];
             bat2 = data[1];

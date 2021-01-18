@@ -43,7 +43,7 @@ namespace GUI_v2.ViewModel
             ConnectedToJetson = modelContainer.modelStatus.networkStatus.ConnectedToJetson;
             modelContainer.modelStatus.networkStatus.ConnectedToJetsonCallback += (val) => { ConnectedToJetson = val; };
 
-            modelContainer.dataContainer.Battery.newDataCallback += (double v1, double v2) => { Battery1Voltage = v1; Battery2Voltage = v2; };
+            modelContainer.dataContainer.Battery.newDataCallback += (float v1, float v2) => { Battery1Voltage = v1; Battery2Voltage = v2; };
             ChangeViewCommand = new RelayCommand(ChangeViewAction, AlwaysAllow);
             ExpandMenuCommand = new RelayCommand(ExpandMenuAction, AlwaysAllow);
  

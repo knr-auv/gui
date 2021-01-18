@@ -19,7 +19,7 @@ namespace GUI_v2.Tools
             ret[3] = L;
             return ret;
         }
-        public void Update(double[] data, int offset)
+        public void Update(float[] data, int offset)
         {
             Kp = data[offset];
             Ki = data[offset + 1];

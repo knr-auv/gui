@@ -127,7 +127,7 @@ namespace GUI_v2.ViewModel.IMUViewModels
             time = DateTime.Now;
         }
         private int c = 0;
-        public void UpdatePlotData(double[] data)
+        public void UpdatePlotData(float[] data)
         {
             double max = 0;
             double min = 0;
