@@ -1,20 +1,15 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using GUI_v2.Model.UserSettings;
-using GUI_v2.Services;
-
+using SharpDX.DirectInput;
 namespace Services.DialogServices.SettingsDialog
 {
     public class ControlSettingsViewModel:DialogBaseViewModel
     {
      
-        public void AssignKeyAction( string key, Key value)
+        public void AssignKeyAction( string key, System.Windows.Input.Key value)
         {
-            controlSettings.Assignment[key] = value;
+            controlSettings.Assignment[key] = (Key)value;
         }
         private bool Allow(object param) => true;
 

@@ -1,16 +1,19 @@
-﻿using System;
+﻿using SharpDX.DirectInput;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-using System.Windows.Input;
-using System.Runtime.Serialization;
-
-namespace GUI_v2.Model.UserSettings
+namespace Controller
 {
     [Serializable]
     public class ControlSettings
     {
-        
+
+        public int ControllerInterval = 50;
+
         public Key submergeKey;
         public Key emergeKey;
         public Key forwardKey;
@@ -57,7 +60,7 @@ namespace GUI_v2.Model.UserSettings
 
         public ControlSettings()
         {
-            submergeKey = Key.LeftCtrl;
+            submergeKey = Key.LeftControl;
             emergeKey = Key.LeftShift;
             forwardKey = Key.W;
             backwardKey = Key.S;
@@ -69,7 +72,7 @@ namespace GUI_v2.Model.UserSettings
             pitchBackwardKey = Key.Down;
 
             Assignment = new Dictionary<string, Key>();
-            Assignment.Add("submerge", Key.LeftCtrl);
+            Assignment.Add("submerge", Key.LeftControl);
             Assignment.Add("emerge", Key.LeftShift);
             Assignment.Add("forward", Key.W);
             Assignment.Add("backward", Key.S);

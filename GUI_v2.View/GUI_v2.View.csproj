@@ -494,6 +494,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{46C80AA0-C33C-4E85-832B-FDC6E1DA2B25}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GUI_v2.Model\GUI_v2.Model.csproj">
       <Project>{E84736F8-BE79-4C14-B00D-C82282F4DB6D}</Project>
       <Name>GUI_v2.Model</Name>

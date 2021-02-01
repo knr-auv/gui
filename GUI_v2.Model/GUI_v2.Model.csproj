@@ -61,7 +61,6 @@
     <Compile Include="Status\NetworkStatus.cs" />
     <Compile Include="Status\SensorStatus.cs" />
     <Compile Include="Status\TaskManagerStatus.cs" />
-    <Compile Include="UserSettings\ControlSettings.cs" />
     <Compile Include="UserSettings\NetworkSettings.cs" />
     <Compile Include="UserSettings\UserSettings.cs" />
   </ItemGroup>
@@ -91,6 +90,12 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{46c80aa0-c33c-4e85-832b-fdc6e1da2b25}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

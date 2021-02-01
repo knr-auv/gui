@@ -1,10 +1,9 @@
-﻿using GUI_v2.Model;
+﻿using Controller;
+using GUI_v2.Model;
 using GUI_v2.Model.DataContainer;
 using GUI_v2.Model.JetsonClient;
 using GUI_v2.Model.Status;
 using GUI_v2.Model.UserSettings;
-using GUI_v2.ViewModel.Tools;
-using GUI_v2.ViewModel.Tools.Controllers;
 using PC_GUI_v2.Model;
 
 namespace GUI_v2.ViewModel
@@ -31,7 +30,7 @@ namespace GUI_v2.ViewModel
         }
         public void SetUserSettings()
         {
-            keyboardController.SetUserSettings(userSettings);
+            keyboardController.SetUserSettings(userSettings.ControlSettings);
         }
     }
 }

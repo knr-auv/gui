@@ -83,7 +83,7 @@ namespace GUI_v2.View
 
         private void FullscreenWindow_KeyUp(object sender, KeyEventArgs e)
         {
-            mainWindow.keyUp(sender, e);
+        
         }
 
         private void FullscreenWindow_KeyDown(object sender, KeyEventArgs e)
@@ -99,7 +99,6 @@ namespace GUI_v2.View
                 FullscreenWindow.BeginAnimation(OpacityProperty, animation);
             }
                 
-            mainWindow.keyDown(sender, e);
         }
 
         private void FullscreenWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

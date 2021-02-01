@@ -25,14 +25,15 @@ namespace GUI_v2.View
         public void keyUp(object sender, KeyEventArgs e)
         {
             var vm = (MainViewModel)DataContext;
-            if(vm.modelContainer.keyboardController.locked)
-                vm.modelContainer.keyboardController.HandleKeyUp(e);
-        }
+            if (vm.modelContainer.keyboardController.keyboard_disabled)
+                e.Handled = true;
+        
+    }
         public void keyDown(object sender, KeyEventArgs e)
         {
             var vm = (MainViewModel)DataContext;
-            if (vm.modelContainer.keyboardController.locked)
-                vm.modelContainer.keyboardController.HandleKeyDown(e);
+            if (vm.modelContainer.keyboardController.keyboard_disabled)
+                e.Handled = true;
         }
 
         private void Window_StateChanged(object sender, EventArgs e)

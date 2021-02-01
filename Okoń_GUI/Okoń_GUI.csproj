@@ -296,6 +296,10 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{46C80AA0-C33C-4E85-832B-FDC6E1DA2B25}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GUI_v2.Model\GUI_v2.Model.csproj">
       <Project>{e84736f8-be79-4c14-b00d-c82282f4db6d}</Project>
       <Name>GUI_v2.Model</Name>
