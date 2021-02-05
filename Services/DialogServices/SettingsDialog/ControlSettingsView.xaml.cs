@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Services.DialogServices.SettingsDialog
 {
     /// <summary>
@@ -45,7 +46,7 @@ namespace Services.DialogServices.SettingsDialog
                 currentLabel = FindByName("ValueLabel", lvi) as Label;
                 if (currentLabel != null)
                 {
-                    KeyValuePair<string, Key> temp = (KeyValuePair<string, Key>)lvi.DataContext;
+                    KeyValuePair<string, SharpDX.DirectInput.Key> temp = (KeyValuePair<string, SharpDX.DirectInput.Key>)lvi.DataContext;
                     prevKey = temp.Key;
                     currentLabel.Content = "...";
                     PreviewKeyDown += ControlSettingsView_KeyDown;

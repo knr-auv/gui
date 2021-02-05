@@ -9,7 +9,9 @@ namespace Services.DialogServices.SettingsDialog
      
         public void AssignKeyAction( string key, System.Windows.Input.Key value)
         {
-            controlSettings.Assignment[key] = (Key)value;
+            Key  keys;
+            Enum.TryParse(value.ToString(), out keys);
+            controlSettings.Assignment[key] = keys;
         }
         private bool Allow(object param) => true;
 

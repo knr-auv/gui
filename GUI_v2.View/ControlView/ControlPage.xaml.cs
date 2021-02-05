@@ -29,7 +29,7 @@ namespace GUI_v2.View
         private Window FullscreenWindow;
         private Grid StreamParent;
         private MainWindow mainWindow;
-
+        private Grid Wrapper;
         private void FullscreenBtn_Clicked(object sender, RoutedEventArgs e)
         {
 
@@ -39,11 +39,19 @@ namespace GUI_v2.View
             FullscreenWindow.WindowStyle = WindowStyle.None;
             FullscreenWindow.WindowState = WindowState.Maximized;
             FullscreenWindow.Background = Brushes.Black;
-
             StreamParent = (Grid)CameraStream.Parent;
+
             StreamParent.Children.Remove(CameraStream);
-            FullscreenWindow.Content = CameraStream;
-            FullscreenWindow.DataContext = CameraStream.DataContext;
+            StreamParent.Children.Remove(HUD);
+
+            Wrapper = new Grid();
+
+            Wrapper.Children.Add(CameraStream);
+            Wrapper.Children.Add(HUD);
+
+            FullscreenWindow.Content = Wrapper;
+            FullscreenWindow.DataContext = StreamParent.DataContext;
+            
             FullscreenWindow.Closing += FullscreenWindow_Closing;
             FullscreenWindow.KeyDown += FullscreenWindow_KeyDown;
             FullscreenWindow.KeyUp += FullscreenWindow_KeyUp;
@@ -104,7 +112,9 @@ namespace GUI_v2.View
         private void FullscreenWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FullscreenWindow.Content = null;
+            Wrapper.Children.Clear();
             StreamParent.Children.Add(CameraStream);
+            StreamParent.Children.Add(HUD);
             mainWindow.Show();
            
         }

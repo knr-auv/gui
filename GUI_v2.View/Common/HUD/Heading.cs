@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 
 namespace GUI_v2.View.Common.HUD
 {
-    class Heading:HUDElementBase
+    public class Heading:HUDElementBase
     {
         private double value;
         private List<Line> lines;

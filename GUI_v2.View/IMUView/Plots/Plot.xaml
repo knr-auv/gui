@@ -14,7 +14,7 @@
     </UserControl.Resources>
     <Grid>
 
-        <oxy:PlotView Model="{Binding PlotModel}"
+        <oxy:PlotView x:Name="Plott" Model="{Binding PlotModel}"
                       
                       Background="Transparent">
             <oxy:PlotView.TrackerDefinitions>

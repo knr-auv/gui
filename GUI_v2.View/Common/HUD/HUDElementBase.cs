@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace GUI_v2.View.Common.HUD
 {
-    class HUDElementBase
+    public class HUDElementBase
     {
         protected int _x;
         protected int _y;

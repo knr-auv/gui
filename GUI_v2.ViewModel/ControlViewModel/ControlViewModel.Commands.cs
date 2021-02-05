@@ -15,9 +15,13 @@ namespace GUI_v2.ViewModel
         public ICommand ArmCommand { get; private set; }
         public ICommand DisarmCommand { get; private set; }
         public ICommand DetectionBtnClickedCommand { get; private set; }
+        private string selectedController = null;
+        private Controller.ControllerBase  currentController;
         private void ArmedCallback()
         {
-            this.modelContainer.keyboardController.StartController(modelContainer.jetsonClient.SendSteering);
+            if (selectedController == "Keyboard")
+                currentController = modelContainer.keyboardController;
+            currentController.StartController(modelContainer.jetsonClient.SendSteering);
             modelContainer.jetsonClient.callbacks.ArmConfirmation -= ArmedCallback;
         }
 
@@ -42,12 +46,13 @@ namespace GUI_v2.ViewModel
 
         private void ArmAction(object parameter)
         {
+            selectedController = (string)parameter;
             modelContainer.jetsonClient.Arm();
             modelContainer.jetsonClient.callbacks.ArmConfirmation += ArmedCallback;
         }
         private void DisarmAction(object parameter)
         {
-            modelContainer.keyboardController.StopController();
+            currentController.StopController();
             modelContainer.jetsonClient.Disarm();
         }
         private bool CanArmAction(object parameter)

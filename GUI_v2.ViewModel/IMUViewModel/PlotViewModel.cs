@@ -129,6 +129,7 @@ namespace GUI_v2.ViewModel.IMUViewModels
         private int c = 0;
         public void UpdatePlotData(float[] data)
         {
+
             double max = 0;
             double min = 0;
             for (var i = 0; i < PlotModel.Series.Count; i++)

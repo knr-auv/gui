@@ -18,7 +18,16 @@ namespace GUI_v2.View.IMUView.Plots
         public Plot()
         {
             InitializeComponent();
-          
+            this.IsVisibleChanged += Plot_IsVisibleChanged;
+        }
+
+        private void Plot_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var obj = (UserControl)sender;
+            if(obj.IsVisible==true)
+                Plott.Visibility = Visibility.Visible;
+            else
+                Plott.Visibility = Visibility.Collapsed;
         }
     }
 }

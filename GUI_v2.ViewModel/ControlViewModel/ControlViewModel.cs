@@ -16,6 +16,7 @@ namespace GUI_v2.ViewModel
             modelContainer.dataContainer.Position.newDataCallback -= Position.UpdateInfo;
             modelContainer.dataContainer.Velocity.newNormCallback -= UpdateVelocity;
             modelContainer.dataContainer.Acceleration.newNormCallback -= UpdateAcceleration;
+            modelContainer.dataContainer.Attitude.newDataCallback -=UpdateAttitude;
         }
         public override void Show()
         {
@@ -23,6 +24,8 @@ namespace GUI_v2.ViewModel
             modelContainer.dataContainer.Position.newDataCallback += Position.UpdateInfo;
             modelContainer.dataContainer.Velocity.newNormCallback += UpdateVelocity;
             modelContainer.dataContainer.Acceleration.newNormCallback += UpdateAcceleration;
+            modelContainer.dataContainer.Attitude.newDataCallback +=UpdateAttitude;
+
         }
 
         
@@ -52,7 +55,7 @@ namespace GUI_v2.ViewModel
 
         private void UpdateVelocity(float x) {Velocity = x;}
         private void UpdateAcceleration(float x) { Acceleration = x; }
-
+        private void UpdateAttitude(float x, float y, float z) { HUDViewModel.UpdateAttitude(x, y, z); }
         private void CameraStreamStatusChangedCallback(bool val)
         {
             if (val == false)

@@ -5,11 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SharpDX.XInput;
 namespace Controller
 {
     public class ControllerBase
     {
+        public static List<string> GetAvailableControllers()
+        {
+            List<string> availableControllers = new List<string>();
+            availableControllers.Add("Keyboard");
+            var controllers = new[] { new SharpDX.XInput.Controller(UserIndex.One), new SharpDX.XInput.Controller(UserIndex.Two), new SharpDX.XInput.Controller(UserIndex.Three), new SharpDX.XInput.Controller(UserIndex.Four) };
+            foreach(var ctr in controllers)
+            {
+                if (ctr.IsConnected)
+                    availableControllers.Add("XBox controller " + ctr.UserIndex.ToString());
+            }
+            return availableControllers;
+
+        }
         public bool keyboard_disabled = false;
 
 

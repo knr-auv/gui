@@ -35,7 +35,16 @@ namespace Controller
             x.Start();
 
         }
-
+        public override void StopController()
+        {
+            if (LoopActive)
+            {
+                LoopActive = false;
+                x.Join();
+                keyboard.Unacquire();
+                
+            }
+        }
         private void ControlLoop(Action<int[]> callback)
         {
             LoopActive = true;

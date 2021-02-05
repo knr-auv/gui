@@ -41,6 +41,8 @@
             <BitmapImage x:Key="LoadingImaqge" UriSource="Images/okonLogo/OKON_LOGO_grey.png"/>
             <BitmapImage x:Key="OkonLogo" UriSource="Images/okonLogo/OKON_LOGO_grey.png" />
             <BitmapImage x:Key="KNRLogo" UriSource="Images/KNR_logo.png" />
+            <BitmapImage x:Key="okonrender" UriSource="Images/OkonModel/OkonRenderTop.png" />
+            
         <BitmapImage x:Key="Icon" UriSource="Images/okonLogo/okon_easy1.png" />
             
             

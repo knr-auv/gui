@@ -9,27 +9,94 @@
              Background="{DynamicResource PlotBackgroundBrush}"
              >
     <UserControl.Resources>
-        <ResourceDictionary Source="../IMUPageStyle.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../IMUPageStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:Plot Grid.Row="0" DataContext="{Binding AttitudePlotViewModel}" Margin="5 5 5 10" Background="{StaticResource OnBackgroundBrush}"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        
+        <Grid  Background="{StaticResource OnBackgroundBrush}" Margin="5 5 5 5" Grid.Row="0" >
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <CheckBox x:Name="ShowAttitude" Content="Attitude" IsChecked="True" Checked="ShowAttitudeChanged" Unchecked="ShowAttitudeChanged" Foreground="{StaticResource ForegroundBrush}"/>
+                <CheckBox x:Name="ShowDepth" Content="Depth" IsChecked="True" Checked="ShowDepthChanged" Unchecked="ShowDepthChanged" Foreground="{StaticResource ForegroundBrush}"/>
+                <CheckBox x:Name="ShowGyro" Content="Gyro" IsChecked="True" Checked="ShowGyroChanged" Unchecked="ShowGyroChanged" Foreground="{StaticResource ForegroundBrush}"/>
+                <CheckBox x:Name="ShowAcc" Content="Acc" IsChecked="True" Checked="ShowAccChanged" Unchecked="ShowAccChanged" Foreground="{StaticResource ForegroundBrush}"/>
+                <CheckBox x:Name="ShowMag" Content="Mag" IsChecked="True" Checked="ShowMagChanged" Unchecked="ShowMagChanged" Foreground="{StaticResource ForegroundBrush}"/>
+                <Label Content="If this page is lagging please disable few plots " Margin="0" Padding="10 0 5 0"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="PlotsLayout"  Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <local:Plot Grid.Column="1" Grid.Row="0" DataContext="{Binding AccPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
-            <local:Plot Grid.Column="0" Grid.Row="0" DataContext="{Binding GyroPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
-            <local:Plot Grid.Column="0" Grid.Row="1" DataContext="{Binding MagPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
-            <local:Plot Grid.Column="1" Grid.Row="1" DataContext="{Binding DepthPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+            
+            <Grid x:Name="TopGrid" Grid.Row="0">
+                <local:Plot Visibility="{Binding ElementName=ShowAttitude, Path=IsChecked, Converter={StaticResource VisibilityConverter}}" 
+                        x:Name="AttitudePlot"
+                        IsEnabled="{Binding ElementName=ShowAttitude, Path=IsChecked}"
+                        DataContext="{Binding AttitudePlotViewModel}" 
+                        Margin="5 5 5 10" Background="{StaticResource OnBackgroundBrush}"/>
+            </Grid>
+            
+            <Grid x:Name="BottomGrid" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="UpperBottomGrid" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:Plot Visibility="{Binding ElementName=ShowAcc, Path=IsChecked, Converter={StaticResource VisibilityConverter}}" 
+                           Grid.Column="0"
+                           IsEnabled="{Binding ElementName=ShowAcc, Path=IsChecked}"
+                           x:Name="AccPlot"
+                           DataContext="{Binding AccPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+
+                    <local:Plot Visibility="{Binding ElementName=ShowGyro, Path=IsChecked, Converter={StaticResource VisibilityConverter}}" 
+                            Grid.Column="1"
+                        x:Name="GyroPlot"
+                                 IsEnabled="{Binding ElementName=ShowGyro, Path=IsChecked}"
+                         DataContext="{Binding GyroPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+                </Grid>
+                <Grid x:Name="LowerBottomGrid" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:Plot Visibility="{Binding ElementName=ShowMag, Path=IsChecked, Converter={StaticResource VisibilityConverter}}" 
+                            Grid.Column="0"
+                                 IsEnabled="{Binding ElementName=ShowMag, Path=IsChecked}"
+                        x:Name="MagPlot"
+                       DataContext="{Binding MagPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+
+                    <local:Plot Visibility="{Binding ElementName=ShowDepth, Path=IsChecked, Converter={StaticResource VisibilityConverter}}" 
+                            Grid.Column="1" 
+                        x:Name="DepthPlot"
+                                 IsEnabled="{Binding ElementName=ShowDepth, Path=IsChecked}"
+                         DataContext="{Binding DepthPlotViewModel}" Margin="5" Background="{StaticResource OnBackgroundBrush}"/>
+
+                </Grid>
+
+                
+
+               
+
+               
+            </Grid>
         </Grid>
-    </Grid>
+       
+      
+        </Grid>
+
 </UserControl>

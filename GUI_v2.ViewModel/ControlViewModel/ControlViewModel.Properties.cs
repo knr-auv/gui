@@ -16,7 +16,10 @@ namespace GUI_v2.ViewModel
         private double _acceleration = 0;
         private double _velocity = 0;
 
-
+        public List<string> AvailableControllers
+        {
+            get { return Controller.ControllerBase.GetAvailableControllers(); }
+        }
 
         public bool Armed
         {
@@ -57,6 +60,7 @@ namespace GUI_v2.ViewModel
         }
 
         public MovementInfoClass Position { get; set; }
+
 
         public HUDViewModel HUDViewModel { get; set; }
         public CameraStreamViewModel CameraViewModel { get; set; }
