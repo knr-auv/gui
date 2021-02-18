@@ -17,6 +17,7 @@ namespace GUI_v2.ViewModel
         public ModelStatus modelStatus;
         public DataContainer dataContainer;
         public KeyboardController keyboardController;
+        public XBoxPadController xBoxPadController;
         public Logger logger;
 
         public ModelContainer()

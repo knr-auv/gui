@@ -39,7 +39,7 @@ namespace GUI_v2.ViewModel
             HUDViewModel = new HUDViewModel();
             DetectionListViewModel = new DetectionListViewModel(modelContainer);
             DetectionDrawerViewModel = new DetectionDrawerViewModel(modelContainer);
-
+            ModeChangedCommand = new RelayCommand(ModeChangedAction, CanArmAction);
             ArmCommand = new RelayCommand(ArmAction, CanArmAction);
             DisarmCommand = new RelayCommand(DisarmAction, CanDisarmAction);
             DetectionBtnClickedCommand = new RelayCommand(DetectionBtnClickedAction, (object p) => { return true; });

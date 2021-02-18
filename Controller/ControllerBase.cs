@@ -44,6 +44,7 @@ namespace Controller
 
         public virtual void StopController()
         {
+
             throw new NotImplementedException();
         }
         public void SetUserSettings(ControlSettings controlSettings)

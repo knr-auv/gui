@@ -44,6 +44,7 @@ namespace Controller
                 keyboard.Unacquire();
                 
             }
+            EnableKeyboard();
         }
         private void ControlLoop(Action<int[]> callback)
         {

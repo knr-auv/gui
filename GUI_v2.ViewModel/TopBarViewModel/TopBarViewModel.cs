@@ -11,17 +11,18 @@ namespace GUI_v2.ViewModel
     {
         public SensorStatusViewModel SensorStatusViewModel { get; set; }
         private ModelContainer modelContainer;
-        private bool _test = false;
-        public bool TestMode
+
+        public bool RealMode
         {
-            get { return _test; }
-            set { SetProperty(ref _test, value); }
+            get { bool ret = (modelContainer.modelStatus.Mode == "jetson_stm");
+                return ret; }
+            set {; }
         }
         public TopBarViewModel(ModelContainer modelContainer)
         {
             this.modelContainer = modelContainer;
             SensorStatusViewModel = new SensorStatusViewModel(modelContainer);
-            TestMode = false;
+    
         }
     }
 }

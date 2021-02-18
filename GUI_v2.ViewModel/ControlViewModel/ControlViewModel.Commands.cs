@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GUI_v2.ViewModel
@@ -15,12 +16,23 @@ namespace GUI_v2.ViewModel
         public ICommand ArmCommand { get; private set; }
         public ICommand DisarmCommand { get; private set; }
         public ICommand DetectionBtnClickedCommand { get; private set; }
+        public ICommand ModeChangedCommand { get; private set; }
         private string selectedController = null;
         private Controller.ControllerBase  currentController;
+
+        private void ModeChangedAction(object parameter)
+        {
+            var obj = (ComboBoxItem)parameter;
+            modelContainer.jetsonClient.SetSteeringMode(obj.Content.ToString());
+        }
         private void ArmedCallback()
         {
             if (selectedController == "Keyboard")
                 currentController = modelContainer.keyboardController;
+            else
+            {
+                currentController = modelContainer.xBoxPadController;
+            }
             currentController.StartController(modelContainer.jetsonClient.SendSteering);
             modelContainer.jetsonClient.callbacks.ArmConfirmation -= ArmedCallback;
         }
