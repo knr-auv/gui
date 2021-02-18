@@ -7,7 +7,7 @@
              xmlns:common="clr-namespace:GUI_v2.View.Common"
              xmlns:HUD="clr-namespace:GUI_v2.View.Common.HUD"
              xmlns:converters="clr-namespace:GUI_v2.View.Converters"
-             xmlns:movement="clr-namespace:GUI_v2.View.IMUView.MovementInfo"
+             xmlns:movement="clr-namespace:GUI_v2.View.IMUView.MovementInfo" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -81,7 +81,20 @@
                                   IsChecked="True"
                                   IsEnabled="True"/>
                         <!--  IsChecked="{Binding ShowHUD}"/>-->
-
+                        <StackPanel Margin="0 5"    
+                                    Visibility="{Binding Armed, Converter={StaticResource VisibilityConverter}}"
+                                    Orientation="Horizontal" Grid.Row="0" Background="{StaticResource ControlSettingsSurfaceBrush}">
+                            <Label Content="Mode: " Margin="0" Padding="0 7 0 0"/>
+                            <ComboBox Width="120" Margin="5" Name="ModeSelector" IsTextSearchEnabled="False">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding ModeChangedCommand}" CommandParameter="{Binding SelectedValue, ElementName=ModeSelector}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <ComboBoxItem Content="Stable" IsSelected="True"/>
+                                <ComboBoxItem Content="Acro"/>
+                            </ComboBox>
+                        </StackPanel>
                         <Button Margin="0 5"  HorizontalAlignment="Stretch" 
                                 IsEnabled="True"
                                 Command="{Binding DetectionBtnClickedCommand}"

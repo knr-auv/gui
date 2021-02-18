@@ -9,6 +9,8 @@ namespace GUI_v2.Model.Status
 {
     public class ModelStatus
     {
+
+
         public SensorStatus sensorStatus = new SensorStatus();
         public NetworkStatus networkStatus = new NetworkStatus();
         public TaskManagerStatus taskManagerStatus = new TaskManagerStatus();
@@ -35,8 +37,15 @@ namespace GUI_v2.Model.Status
         {
             get { return _armed; }
             set {
-                _armed = value; 
+                _armed = value;
                 ArmCallback?.Invoke(value); }
+        }
+
+        private string _mode = "";
+        public string Mode
+        {
+            get { return _mode; }
+            set { _mode = value; }
         }
 
 

@@ -81,9 +81,9 @@ namespace GUI_v2.Model.JetsonClient
     
         public void SetSteeringMode(string mode)
         {
-            if (mode == "acro")
+            if (mode == "Acro")
                 sender?.SendSteering(TO_JETSON.STEERING_MSG.MODE_ACRO, null);
-            else if (mode == "stable")
+            else if (mode == "Stable")
                 sender?.SendSteering(TO_JETSON.STEERING_MSG.MODE_STABLE, null);
         }
 

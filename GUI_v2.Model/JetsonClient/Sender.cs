@@ -43,9 +43,18 @@ namespace GUI_v2.Model.JetsonClient
         }
         public void SendSteering(TO_JETSON.STEERING_MSG msg, byte[] data)
         {
-            byte[] b = new byte[data.Length+1];
-            b[0] = (byte)TO_JETSON.STEERING_MSG.PAD;
-            Buffer.BlockCopy(data, 0, b, 1, data.Length);
+            byte[] b;
+            if (msg == TO_JETSON.STEERING_MSG.PAD)
+            {
+                 b = new byte[data.Length + 1];
+                b[0] = (byte)TO_JETSON.STEERING_MSG.PAD;
+                Buffer.BlockCopy(data, 0, b, 1, data.Length);
+            }
+            else
+            {  b = new byte[1];
+                b[0] = (byte)msg;
+            }
+
             Send_msg(b, TO_JETSON.STEERING);
             
         }

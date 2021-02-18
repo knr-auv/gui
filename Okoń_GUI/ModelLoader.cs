@@ -54,6 +54,7 @@ namespace GUI_v2.View
             modelContainer.jetsonClient.callbacks.DetectorStoped += () => modelContainer.modelStatus.DetectorRunning = false;
             modelContainer.jetsonClient.ConnectionStatusChnaged += (bool val) => {if(!val) modelContainer.modelStatus.DetectorRunning = val; };
             modelContainer.jetsonClient.callbacks.MotorsDataCallback += (float[] data) => { modelContainer.dataContainer.motorsData.UpdateData(data); };
+            modelContainer.jetsonClient.callbacks.modeMsgCallback += (string text) => { modelContainer.modelStatus.Mode = text; };
 
             }
         public ModelContainer GetModelConatiner()

@@ -77,7 +77,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="2" Visibility="{Binding TopBarViewModel.TestMode, Converter={StaticResource BoolToVisibility}}">
+            <Grid Grid.Column="2" Visibility="{Binding TopBarViewModel.RealMode, Converter={StaticResource BoolToVisibility}}">
                 <local:StatusInfo  DataContext="{Binding TopBarViewModel.SensorStatusViewModel}" />
 
             </Grid>
@@ -92,7 +92,7 @@
                 <ColumnDefinition Width="Auto"/>
 
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Visibility="{Binding TopBarViewModel.TestMode, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel Grid.Column="1" Visibility="{Binding TopBarViewModel.RealMode, Converter={StaticResource BoolToVisibility}}">
                 <common:BatteryWidget Width="150" Height="50" Grid.Column="1" BatteryLevel="{Binding Battery1Percent}" BatteryCritical="20" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="First Battery : " Padding="0"/>
@@ -100,7 +100,7 @@
                         <Label Content="V" Padding="0"/>
                     </StackPanel>
             </StackPanel>
-                <StackPanel Grid.Column="3" VerticalAlignment="Center" Visibility="{Binding TopBarViewModel.TestMode, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel Grid.Column="3" VerticalAlignment="Center" Visibility="{Binding TopBarViewModel.RealMode, Converter={StaticResource BoolToVisibility}}">
                     <common:BatteryWidget Width="150" Height="50" Grid.Column="1" BatteryLevel="{Binding Battery2Percent}" BatteryCritical="20" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="Second Battery : " Padding="0"/>

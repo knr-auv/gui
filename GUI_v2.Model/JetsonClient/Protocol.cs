@@ -46,6 +46,7 @@ namespace GUI_v2.Model.JetsonClient
         public const byte REQUEST_RESPONCE = 0x02;
         public const byte AUTONOMY = 0x03;
         public const byte STATUS = 0x04;
+        public const byte SETTINGS = 0x05;
         public enum TELEMETRY_MSG : byte
         {
             MOTORS = 0x01,
@@ -71,7 +72,14 @@ namespace GUI_v2.Model.JetsonClient
         {
             LOGGER = 0x01,
             SENSOR_STATUS = 0x02,
-            TASK_MANAGER = 0x03
+            TASK_MANAGER = 0x03,
+            MODE_PC_SIMULATION = 0x04,
+            MODE_JETSON_STM = 0x05,
+            MODE_JETSON_SIMULATION = 0x06
+        }
+        public enum SETTINGS_MSG : byte
+        {
+
         }
     }
 

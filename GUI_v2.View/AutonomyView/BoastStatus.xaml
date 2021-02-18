@@ -107,6 +107,7 @@
 
                     </Ellipse>
                     </Grid>
+                        <Label Content="Roll" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
                 <!--#endregion-->
@@ -147,6 +148,7 @@
 
                     </Ellipse>
                         </Grid>
+                        <Label Content="Pitch" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
                 <!--#endregion-->
@@ -187,6 +189,7 @@
 
                     </Ellipse>
                         </Grid>
+                        <Label Content="Heading" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
                 <!--#endregion-->

@@ -29,6 +29,7 @@ namespace GUI_v2.Model.JetsonClient
         public Data BatteryCallback;
         public TextData loggerMsgCallback;
         public TextData taskManagerMsgCallback;
+        public TextData modeMsgCallback;
      
     }
 }

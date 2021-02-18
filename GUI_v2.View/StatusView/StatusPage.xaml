@@ -8,9 +8,25 @@
       xmlns:local="clr-namespace:GUI_v2.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StatusPageStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+          
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-        <Image Source="{StaticResource okonrender}" />
-       
+        <Grid  Background="{StaticResource OnBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Motor Tester" Grid.Row="0" FontSize="20"/>
+            <StatusView:MotorTester Grid.Row="1"/>
+        <!-- <Image Source="{StaticResource okonrender}" /> -->
+        </Grid>
     </Grid>
 </UserControl>

@@ -34,6 +34,9 @@ namespace GUI_v2.Model.JetsonClient
                 case FROM_JETSON.STATUS:
                     HandleStatus(data);
                     break;
+                case FROM_JETSON.SETTINGS:
+                    HandleSettings(data);
+                    break;
 
                 default:
                     Console.WriteLine(data[0].ToString() + "is not a valid protocol stuff");
@@ -164,8 +167,27 @@ namespace GUI_v2.Model.JetsonClient
                     result = Encoding.UTF8.GetString(data, 2, data.Length - 2);
                     cb.taskManagerMsgCallback?.Invoke(result);
                     break;
+                case FROM_JETSON.STATUS_MSG.MODE_PC_SIMULATION:
+                    cb.modeMsgCallback?.Invoke("pc_simulation");
+                    break;
+                case FROM_JETSON.STATUS_MSG.MODE_JETSON_STM:
+                    cb.modeMsgCallback?.Invoke("jetson_stm");
+                    break;
+                case FROM_JETSON.STATUS_MSG.MODE_JETSON_SIMULATION:
+                    cb.modeMsgCallback?.Invoke("jetson_simulation");
+                    break;
 
             }
+        }
+
+        private void HandleSettings(byte[] data)
+        {
+            byte key = data[1];
+            switch (key)
+            {
+              
+            }
+
         }
 
     }
