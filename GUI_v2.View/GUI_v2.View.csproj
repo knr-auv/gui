@@ -276,6 +276,9 @@
     <Compile Include="StatusView\Boat3DView.xaml.cs">
       <DependentUpon>Boat3DView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatusView\IMUSettings.xaml.cs">
+      <DependentUpon>IMUSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StatusView\MotorSlider.xaml.cs">
       <DependentUpon>MotorSlider.xaml</DependentUpon>
     </Compile>
@@ -444,6 +447,10 @@
     <Page Include="StatusView\Boat3DView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StatusView\IMUSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StatusView\MotorSlider.xaml">
       <SubType>Designer</SubType>

@@ -19,8 +19,8 @@
 
 
 
-   
-    
+
+
 
 
     <SolidColorBrush x:Key="WindowBorderBrush" Color="{StaticResource SecondaryColor}"/>

@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="GUI_v2.View.StatusView.IMUSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_v2.View.StatusView"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StatusPageStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="IMU settings" FontSize="{StaticResource HeaderFontSize}"/>
+        <Grid Grid.Row="1" Background="{StaticResource OnBackgroundBrush}" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Label Content="Level" FontWeight="Bold" FontSize="{StaticResource FontSize}"/>
+            <Grid  Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Roll:" FontSize="{StaticResource FontSize}"/>
+                <TextBox Grid.Column="1"  Margin="20 5"/>
+            </Grid>
+            <Grid  Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Pitch:" FontSize="{StaticResource FontSize}"/>
+                <TextBox Grid.Column="1"  Margin="20 5"/>
+            </Grid>
+
+            <Button Content="set" Grid.Column="3" Margin="20 5"/>
+            <Button Content="set current" Grid.Column="4" Margin="20 5"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Magnetometer" FontSize="{StaticResource FontSize}" FontWeight="Bold"/>
+                <RadioButton Grid.Column="1"  Content="Enabled" IsChecked="True" FontSize="{StaticResource FontSize}"
+                             Foreground="{StaticResource ForegroundBrush}"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"/>
+                <RadioButton Grid.Column="2" Content="Disabled" FontSize="{StaticResource FontSize}"
+                             Foreground="{StaticResource ForegroundBrush}"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"/>
+                <Button Grid.Column="3" Content="set" Margin="25 5"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
+
+

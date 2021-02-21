@@ -48,10 +48,11 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Orientation="Horizontal" Width="Auto">
                         <Label Content="Control:"/>
-                        <ComboBox x:Name="ControlBox" Width="120"  
+                        <ComboBox x:Name="ControlBox" Width="120"
+                               
                                   SelectedItem="Keyboard"
                                   ItemsSource="{Binding AvailableControllers}"
-                                  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="ControlBox_SelectionChanged">
                           
                         </ComboBox>
                         <Button Width="80" Margin="5 0" Height="{Binding ActualHeight, ElementName=ControlBox}" 
@@ -85,7 +86,13 @@
                                     Visibility="{Binding Armed, Converter={StaticResource VisibilityConverter}}"
                                     Orientation="Horizontal" Grid.Row="0" Background="{StaticResource ControlSettingsSurfaceBrush}">
                             <Label Content="Mode: " Margin="0" Padding="0 7 0 0"/>
-                            <ComboBox Width="120" Margin="5" Name="ModeSelector" IsTextSearchEnabled="False">
+                            <ComboBox Width="120" Margin="5" Name="ModeSelector" 
+                                         KeyDown="ControlBox_KeyDown"
+                                      KeyUp="ControlBox_KeyUp"
+                                      IsManipulationEnabled="False"
+                                      Focusable="False"
+             
+                                      IsTextSearchEnabled="False">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectionChanged">
                                         <i:InvokeCommandAction Command="{Binding ModeChangedCommand}" CommandParameter="{Binding SelectedValue, ElementName=ModeSelector}"/>

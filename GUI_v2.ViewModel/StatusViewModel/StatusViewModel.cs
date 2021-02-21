@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GUI_v2.ViewModel
 {
-    public class StatusViewModel:BaseViewModel
+    public partial class StatusViewModel : BaseViewModel
     {
         public override void Show()
         {
@@ -19,6 +19,11 @@ namespace GUI_v2.ViewModel
         public StatusViewModel(ModelContainer modelContainer)
         { 
            
+        }
+        private void handleMotorSliderChange()
+        {
+
+            Console.WriteLine(M1.ToString() + M2.ToString());
         }
     }
 }

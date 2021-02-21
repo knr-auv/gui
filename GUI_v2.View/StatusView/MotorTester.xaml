@@ -10,9 +10,9 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <CheckBox Content="Enable motors" Foreground="{StaticResource ForegroundBrush}" HorizontalAlignment="Right" Name="Box"/>
+            <CheckBox Content="Enable motors" Click="Box_Click" Foreground="{StaticResource ForegroundBrush}" HorizontalAlignment="Right" Name="Box"/>
             <Grid  Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -24,27 +24,27 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Center">
-                <local:MotorSlider Height="250" IsEnabled="{Binding IsChecked, ElementName=Box}"/>
+                <local:MotorSlider  MotorValue="{Binding M1, Mode=OneWayToSource}"  IsEnabled="{Binding IsChecked, ElementName=Box}"/>
                     <Label Content="Motor 1"/>
                 </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Center">
-                <local:MotorSlider Height="250" IsEnabled="{Binding IsChecked, ElementName=Box}"/>
+                <local:MotorSlider  MotorValue="{Binding M2, Mode=OneWayToSource}" IsEnabled="{Binding IsChecked, ElementName=Box}"/>
                 <Label Content="Motor 2"/>
                 </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Center">
-                <local:MotorSlider Height="250" IsEnabled="{Binding IsChecked, ElementName=Box}"/>
+                <local:MotorSlider  MotorValue="{Binding M3, Mode=OneWayToSource}"  IsEnabled="{Binding IsChecked, ElementName=Box}"/>
                 <Label Content="Motor 3"/>
                 </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="3" HorizontalAlignment="Center">
-                <local:MotorSlider Height="250" IsEnabled="{Binding IsChecked, ElementName=Box}"/>
+                <local:MotorSlider  MotorValue="{Binding M4, Mode=OneWayToSource}"  IsEnabled="{Binding IsChecked, ElementName=Box}"/>
                     <Label Content="Motor 4"/>
                 </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Column="4" HorizontalAlignment="Center">
-                <local:MotorSlider Height="250" IsEnabled="{Binding IsChecked, ElementName=Box}"/>
+                <local:MotorSlider  MotorValue="{Binding M5, Mode=OneWayToSource}"  IsEnabled="{Binding IsChecked, ElementName=Box}"/>
                     <Label Content="Motor 5"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Grid.Column="5" HorizontalAlignment="Center">
-                <local:MotorSlider Height="250" IsEnabled="{Binding IsChecked, ElementName=Box}"/>
+                <local:MotorSlider MotorValue="{Binding M6, Mode=OneWayToSource}"  IsEnabled="{Binding IsChecked, ElementName=Box}"/>
                 <Label Content="Motor 6"/>
                 </StackPanel>
             </Grid>

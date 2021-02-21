@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 
@@ -128,6 +128,11 @@ namespace GUI_v2.ViewModel.IMUViewModels
         }
         private int c = 0;
         public void UpdatePlotData(float[] data)
+        {
+            Action<object> x = (object s) => { __UpdatePlotData(data); };
+            ThreadPool.QueueUserWorkItem(new WaitCallback(x));
+        }
+        public void __UpdatePlotData(float[] data)
         {
 
             double max = 0;

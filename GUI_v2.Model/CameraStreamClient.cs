@@ -65,7 +65,7 @@ namespace GUI_v2.Model
         {
             return LoopActive;
         }
-        public void StartStream(NewFrameCallback callback,  Notifyier connectionErrorCb, double fps = 45)
+        public void StartStream(NewFrameCallback callback,  Notifyier connectionErrorCb, double fps = 60)
         {
             connectionDownCb = connectionErrorCb;
             if (stream != null && LoopActive == false)

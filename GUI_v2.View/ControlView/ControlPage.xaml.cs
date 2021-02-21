@@ -119,6 +119,19 @@ namespace GUI_v2.View
            
         }
 
+        private void ControlBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
 
+        private void ControlBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void ControlBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

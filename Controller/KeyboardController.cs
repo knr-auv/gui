@@ -32,6 +32,7 @@ namespace Controller
             x = new Thread(() => ControlLoop(callback));
             var directInput = new DirectInput();
             keyboard = new Keyboard(directInput);
+            keyboard.Acquire();
             x.Start();
 
         }
@@ -51,7 +52,9 @@ namespace Controller
             LoopActive = true;
             DateTime last = DateTime.Now;
             int freq = controlSettings.ControllerInterval;
-            keyboard.Acquire();
+
+         
+
             while (LoopActive)
             {
                 if ((DateTime.Now - last).Milliseconds >= freq)

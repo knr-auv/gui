@@ -31,7 +31,9 @@ namespace GUI_v2.Model.JetsonClient
             STOP_AUTONOMY =0x04,
             START_TELEMETRY = 0x05,
             START_DETECTOR = 0x06,
-            STOP_DETECTOR = 0x07
+            STOP_DETECTOR = 0x07,
+            SET_MOTORS = 0x08,
+            DISABLE_MOTORS = 0x09
         }
         public enum SETTINGS_MSG : byte
         {

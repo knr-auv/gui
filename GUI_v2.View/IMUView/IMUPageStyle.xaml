@@ -11,7 +11,8 @@
     <SolidColorBrush x:Key="PIDTextBrush"  Color="{StaticResource OnSurfaceColor}" Opacity="0.7"/>
     <sys:Double x:Key="PIDHeaderFontSize">15</sys:Double>
     <Thickness  x:Key="PIDBorderThickness">0</Thickness>
-    
+    <sys:Double x:Key="HeaderFontSize">20</sys:Double>
+    <sys:Double x:Key="FontSize">15</sys:Double>
 
     <SolidColorBrush x:Key="PloTitleBrush" Color="{StaticResource SurfaceColor}"/>
     <SolidColorBrush x:Key="PlotBackgroundBrush" Color="{StaticResource PrimaryColor}"  Opacity="{StaticResource OnBackgroundOpacity}"/>

@@ -6,10 +6,25 @@
              xmlns:local="clr-namespace:GUI_v2.View.StatusView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StatusPageStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-        <StackPanel Orientation="Horizontal">
-            <Slider Minimum="-100" Maximum="100" TickPlacement="BottomRight" TickFrequency="5" Orientation="Vertical" Name="slider"/>
-            <Label Content="{Binding ElementName=slider, Path=Value}" ContentStringFormat="0" Width="35" VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="0" Padding="0"/>
-        </StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource MotorSliderHeight}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Slider Grid.Row="0" Minimum="-500" Maximum="500"
+                    Value="{Binding MotorValue , RelativeSource={RelativeSource AncestorType=UserControl}}" TickPlacement="BottomRight" TickFrequency="5" Orientation="Vertical" Name="slider"/>
+            <Label Grid.Row="1" Content="{Binding ElementName=slider, Path=Value}" ContentStringFormat="0" Width="35" VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="0" Padding="0"/>
+        </Grid>
     </Grid>
 </UserControl>

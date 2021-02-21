@@ -110,7 +110,7 @@
             Image="{StaticResource ControlImage}"
             -->
                 
-            <local:MenuBarButton Text="Status"  Command="{Binding ChangeViewCommand}" CommandParamater="Status"/>
+            <local:MenuBarButton Text="Settings"  Command="{Binding ChangeViewCommand}" CommandParamater="Status"/>
             <local:MenuBarButton Text="IMU"  Command="{Binding ChangeViewCommand}" CommandParamater="IMU"/>
             <local:MenuBarButton Text="Control" Command="{Binding ChangeViewCommand}" CommandParamater="Control"/>
             <local:MenuBarButton Text="Autonomy"  Command="{Binding ChangeViewCommand}" CommandParamater="Autonomy"/>

@@ -19,14 +19,34 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <Grid  Background="{StaticResource OnBackgroundBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Content="Motor Tester" Grid.Row="0" FontSize="20"/>
-            <StatusView:MotorTester Grid.Row="1"/>
-        <!-- <Image Source="{StaticResource okonrender}" /> -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid Background="{StaticResource OnBackgroundBrush}" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--#region Motor tester -->
+                <Grid  Background="{StaticResource SurfaceBrush}" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Motor Tester" Grid.Row="0" FontSize="20"/>
+                    <StatusView:MotorTester Grid.Row="1" />
+                    <!-- <Image Source="{StaticResource okonrender}" /> -->
+                </Grid>
+                <!--#endregion-->
+                <!--#region IMU settings -->
+                <Grid Grid.Row="1" Background="{StaticResource SurfaceBrush}" Margin="5">
+                    <StatusView:IMUSettings VerticalAlignment="Center"/>
+                </Grid>
+                <!--#endregion-->
+            </Grid>
         </Grid>
+
     </Grid>
 </UserControl>

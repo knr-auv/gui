@@ -24,5 +24,24 @@ namespace GUI_v2.View.StatusView
         {
             InitializeComponent();
         }
+
+        public double MotorValue
+        {
+            get { return (double)GetValue(MotorValueProperty); }
+            set { SetValue(MotorValueProperty, value); }
+        }
+        public static readonly DependencyProperty MotorValueProperty =
+           DependencyProperty.Register("MotorValue",
+               typeof(double),
+               typeof(MotorSlider));/*,
+               new UIPropertyMetadata((double)0, MotorValueChanged));
+
+        private static void MotorValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var obj = (MotorSlider)d;
+            double val = (double)e.NewValue;
+            
+        }
+        */
     }
 }
