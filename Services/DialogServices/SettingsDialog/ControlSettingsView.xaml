@@ -70,7 +70,7 @@
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="69"/>
                         </Grid.ColumnDefinitions>
                         
                         <Label Content="{Binding Key, Converter={StaticResource dictionaryConverter}}"/>

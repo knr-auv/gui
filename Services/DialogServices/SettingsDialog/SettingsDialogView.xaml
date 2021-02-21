@@ -8,7 +8,15 @@
              mc:Ignorable="d" 
              Background="Transparent"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border CornerRadius="5">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SettingsDialogStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        </ResourceDictionary>
+        </UserControl.Resources>
+        <Border CornerRadius="5">
         <Border.Background>
             <SolidColorBrush Color="{StaticResource SecondaryColor}"/>
         </Border.Background>
@@ -20,16 +28,22 @@
             <Grid Margin="5" Background="{StaticResource BackgroundBrush}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Margin="5">
-                    <local:NetworkSettings Background="{StaticResource SettingsDialogSurfaceBrush}" Padding="5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <local:AppSettings/>
                 </Grid>
-                <Grid Margin="5" Grid.Column="1">
-                    <local:ControlSettingsView Background="{StaticResource SettingsDialogSurfaceBrush}" Padding="5" HorizontalAlignment="Left" VerticalAlignment="Top" DataContext="{Binding ControlSettingsViewModel}"/>
+                <Grid Margin="5" Grid.Column="1"  Background="{StaticResource SettingsDialogSurfaceBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Keyboard settings" FontSize="{StaticResource HeaderSize}" FontWeight="Bold"/>
+                    <local:ControlSettingsView Grid.Row="1" Padding="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" DataContext="{Binding ControlSettingsViewModel}"/>
                 </Grid>
             </Grid>
             
+            <!--#region Footer -->
             <Grid Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 0 10 5">
                 <Grid.Background>
                     <SolidColorBrush Color="{StaticResource SecondaryColor}"/>
@@ -43,6 +57,7 @@
                 </StackPanel>
                 
             </Grid>
+            <!--#endregion-->
         </Grid>
     </Border>
 </UserControl>

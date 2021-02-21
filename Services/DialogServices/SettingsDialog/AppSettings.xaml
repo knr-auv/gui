@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="Services.DialogServices.SettingsDialog.AppSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Services.DialogServices.SettingsDialog"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SettingsDialogStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--#region Network settings -->
+        <Grid Background="{StaticResource OnBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Network" FontSize="{StaticResource HeaderSize}" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="5" Background="{StaticResource SettingsDialogSurfaceBrush}">
+                <Label Content="IP: "/>
+                <TextBox Width="120" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding JetsonIP}"/>
+                <Label Content="control port: "/>
+                <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding ControlPort}"/>
+
+                <Label Content="stream port: "/>
+                <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding VideoStreamPort}"/>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+        <!--#region BatterySettings -->
+        <Grid Grid.Row="1" Background="{StaticResource OnBackgroundBrush}" Margin="0 5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Battery" FontSize="{StaticResource HeaderSize}" FontWeight="Bold"/>
+            <Grid Grid.Row="1"  Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Background="{StaticResource SurfaceBrush}">
+                    <Label Content="Bat1: " FontWeight="Bold"/>
+                    <Label Content="Max: "/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1.max}"/>
+                    <Label Content="Min: "/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1.min}"/>
+                    <Label Content="Allert: "/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1.allert}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Background="{StaticResource SurfaceBrush}" Margin="0 5 0 0">
+                    <Label Content="Bat2: " FontWeight="Bold"/>
+                    <Label Content="Max: "/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2.max}"/>
+                    <Label Content="Min: "/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2.min}"/>
+                    <Label Content="Allert: "/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2.allert}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Hummidity -->
+        <Grid Grid.Row="2" Background="{StaticResource OnBackgroundBrush}" Margin="0 5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Hummidity" FontSize="{StaticResource HeaderSize}" FontWeight="Bold"/>
+            <Grid Grid.Row="1"  Margin="5">
+                <StackPanel Orientation="Horizontal" Background="{StaticResource SurfaceBrush}">
+                    <Label Content="Allert: "/>
+                    <TextBox Text="0" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5"/>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+        <!--#endregion-->
+    </Grid>
+
+</UserControl>

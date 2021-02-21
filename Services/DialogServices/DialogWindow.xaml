@@ -6,7 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Services.DialogServices"
         mc:Ignorable="d"
-        Title="DialogWindow" Height="450" Width="800"        
+        Title="DialogWindow" Height="450" Width="900"        
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
         ResizeMode="NoResize"
