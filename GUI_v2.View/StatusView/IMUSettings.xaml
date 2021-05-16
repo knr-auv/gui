@@ -19,6 +19,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Content="IMU settings" FontSize="{StaticResource HeaderFontSize}"/>
         <Grid Grid.Row="1" Background="{StaticResource OnBackgroundBrush}" Margin="5">
@@ -26,8 +27,8 @@
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
 
             </Grid.ColumnDefinitions>
             <Label Content="Level" FontWeight="Bold" FontSize="{StaticResource FontSize}"/>
@@ -48,16 +49,16 @@
                 <TextBox Grid.Column="1"  Margin="20 5"/>
             </Grid>
 
-            <Button Content="set" Grid.Column="3" Margin="20 5"/>
-            <Button Content="set current" Grid.Column="4" Margin="20 5"/>
+            <Button Grid.Column="3" Margin="10 0" Content="set" HorizontalAlignment="Stretch"  VerticalAlignment="Center"/>
+            <Button Grid.Column="4" Margin="10 0" Content="set current" HorizontalAlignment="Stretch"  VerticalAlignment="Center"/>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Magnetometer" FontSize="{StaticResource FontSize}" FontWeight="Bold"/>
                 <RadioButton Grid.Column="1"  Content="Enabled" IsChecked="True" FontSize="{StaticResource FontSize}"
@@ -68,7 +69,27 @@
                              Foreground="{StaticResource ForegroundBrush}"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Center"/>
-                <Button Grid.Column="3" Content="set" Margin="25 5"/>
+                <Button Grid.Column="3" Margin="10 0" Content="set" HorizontalAlignment="Stretch"  VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3" Margin="5" >
+            <Grid Background="{StaticResource OnBackgroundBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+       
+                    <ColumnDefinition Width="150"/>
+         
+                </Grid.ColumnDefinitions>
+                <Label Content="IMU orientation" FontSize="{StaticResource FontSize}" FontWeight="Bold"/>
+                <CheckBox Content="Upside down" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ForegroundBrush}" Margin="20 0"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Rotation(deg): "/>
+                    <TextBox Text="0" Width="50" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                </StackPanel>
+                <Button Grid.Column="4" Margin="10 0" Content="set" HorizontalAlignment="Stretch"  VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

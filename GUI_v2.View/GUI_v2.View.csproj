@@ -221,12 +221,9 @@
     <Compile Include="Common\DetectionList.xaml.cs">
       <DependentUpon>DetectionList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\HUD\ArtificialHorizon.cs" />
-    <Compile Include="Common\HUD\Heading.cs" />
     <Compile Include="Common\HUD.xaml.cs">
       <DependentUpon>HUD.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\HUD\HUDElementBase.cs" />
     <Compile Include="Common\Logger.xaml.cs">
       <DependentUpon>Logger.xaml</DependentUpon>
     </Compile>
@@ -240,6 +237,7 @@
     <Compile Include="Converters\BoolToVisibilityReversed.cs" />
     <Compile Include="Converters\Divider.cs" />
     <Compile Include="Converters\InversedBool.cs" />
+    <Compile Include="Converters\ResizeConverter.cs" />
     <Compile Include="Converters\ToStringConverter.cs" />
     <Compile Include="Converters\MultiCommandConverter.cs" />
     <Compile Include="Converters\NegativeValueConverter.cs" />
@@ -273,11 +271,14 @@
     <Compile Include="MenuBar\MenuBarButton.xaml.cs">
       <DependentUpon>MenuBarButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatusView\Boat3DView.xaml.cs">
-      <DependentUpon>Boat3DView.xaml</DependentUpon>
+    <Compile Include="StatusView\BoatOverview.xaml.cs">
+      <DependentUpon>BoatOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatusView\IMUSettings.xaml.cs">
       <DependentUpon>IMUSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusView\MotorsImage.xaml.cs">
+      <DependentUpon>MotorsImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatusView\MotorSlider.xaml.cs">
       <DependentUpon>MotorSlider.xaml</DependentUpon>
@@ -444,11 +445,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StatusView\Boat3DView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="StatusView\BoatOverview.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StatusView\IMUSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusView\MotorsImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

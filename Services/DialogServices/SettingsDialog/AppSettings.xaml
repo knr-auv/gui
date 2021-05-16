@@ -55,20 +55,20 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Background="{StaticResource SurfaceBrush}">
                     <Label Content="Bat1: " FontWeight="Bold"/>
                     <Label Content="Max: "/>
-                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1.max}"/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1Max}"/>
                     <Label Content="Min: "/>
-                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1.min}"/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1Min}"/>
                     <Label Content="Allert: "/>
-                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1.allert}"/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat1Allert}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Background="{StaticResource SurfaceBrush}" Margin="0 5 0 0">
                     <Label Content="Bat2: " FontWeight="Bold"/>
                     <Label Content="Max: "/>
-                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2.max}"/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2Max}"/>
                     <Label Content="Min: "/>
-                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2.min}"/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2Min}"/>
                     <Label Content="Allert: "/>
-                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2.allert}"/>
+                    <TextBox Width="60" Margin="0 5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Bat2Allert}"/>
                 </StackPanel>
             </Grid>
         </Grid>

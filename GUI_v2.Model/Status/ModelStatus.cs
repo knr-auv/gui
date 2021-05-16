@@ -15,8 +15,11 @@ namespace GUI_v2.Model.Status
         public NetworkStatus networkStatus = new NetworkStatus();
         public TaskManagerStatus taskManagerStatus = new TaskManagerStatus();
         public delegate void Callback(bool value);
+        public delegate void StrCallback(string v);
+        public StrCallback ModeChangedCallback;
         public Callback ArmCallback;
         public Callback AutonomyStatusCallback;
+
         public Callback DetectorStatusCallback;
         private bool _detectorRunning = false;
         private bool _autonomyRunning = false;
@@ -45,7 +48,9 @@ namespace GUI_v2.Model.Status
         public string Mode
         {
             get { return _mode; }
-            set { _mode = value; }
+            set { _mode = value;
+                ModeChangedCallback?.Invoke(value);
+            }
         }
 
 

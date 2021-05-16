@@ -227,69 +227,6 @@
     <Resource Include="Images\okonLogo\OKON_LOGO_white.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\OkonModel\okon.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\Bat_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_adjust_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_adjust_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_bat_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_cli_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_cli_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_config_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_config_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_ports_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_ports_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_setup_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_usb1_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\cf_icon_usb2_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\CF_settings_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\icon_connected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\icon_notconnected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\joystick.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\pid_icon_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\pid_icon_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Png\setup_icon_grey.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\KNR_logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -330,7 +267,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\OkonModel\OkonRenderTop.png" />
+    <Resource Include="Images\OkonModel\okon_1.png" />
+    <Resource Include="Images\OkonModel\okon_interior.png" />
+    <Resource Include="Images\OkonModel\okon_up.png" />
+    <Resource Include="Images\OkonModel\okon_dok.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

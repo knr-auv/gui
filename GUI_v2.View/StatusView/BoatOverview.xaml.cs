@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Services.DialogServices.SettingsDialog
+namespace GUI_v2.View.StatusView
 {
     /// <summary>
-    /// Interaction logic for NetworkSettings.xaml
+    /// Interaction logic for BoatOverview.xaml
     /// </summary>
-    public partial class NetworkSettings : UserControl
+    public partial class BoatOverview : UserControl
     {
-        public NetworkSettings()
+        public BoatOverview()
         {
             InitializeComponent();
         }

@@ -17,9 +17,12 @@ namespace GUI_v2.ViewModel
             modelContainer.dataContainer.Velocity.newNormCallback -= UpdateVelocity;
             modelContainer.dataContainer.Acceleration.newNormCallback -= UpdateAcceleration;
             modelContainer.dataContainer.Attitude.newDataCallback -=UpdateAttitude;
+            CameraViewModel.DrawOnImage -= HUDViewModel.Generate;
         }
         public override void Show()
         {
+            if(HUDVisible)
+                CameraViewModel.DrawOnImage += HUDViewModel.Generate;
             modelContainer.cameraStreamClient.StartStream(CameraViewModel.SwapImage, CameraViewModel.SetLogo);
             modelContainer.dataContainer.Position.newDataCallback += Position.UpdateInfo;
             modelContainer.dataContainer.Velocity.newNormCallback += UpdateVelocity;
@@ -28,7 +31,6 @@ namespace GUI_v2.ViewModel
 
         }
 
-        
         public ModelContainer modelContainer;
 
         public ControlViewModel(ModelContainer modelContainer)
@@ -42,6 +44,7 @@ namespace GUI_v2.ViewModel
             ModeChangedCommand = new RelayCommand(ModeChangedAction, CanArmAction);
             ArmCommand = new RelayCommand(ArmAction, CanArmAction);
             DisarmCommand = new RelayCommand(DisarmAction, CanDisarmAction);
+         
             DetectionBtnClickedCommand = new RelayCommand(DetectionBtnClickedAction, (object p) => { return true; });
             modelContainer.modelStatus.ArmCallback += (bool value) => { Armed = value; };
             modelContainer.modelStatus.networkStatus.ConnectedToJetsonCallback += (bool value) => { JetsonConnected = value; };
@@ -51,6 +54,7 @@ namespace GUI_v2.ViewModel
                 DetectionState = val;
               
             };
+
         }
 
         private void UpdateVelocity(float x) {Velocity = x;}

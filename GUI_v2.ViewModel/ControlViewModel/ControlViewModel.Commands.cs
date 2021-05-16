@@ -17,6 +17,7 @@ namespace GUI_v2.ViewModel
         public ICommand DisarmCommand { get; private set; }
         public ICommand DetectionBtnClickedCommand { get; private set; }
         public ICommand ModeChangedCommand { get; private set; }
+        public ICommand HUDCheckboxChangedCommand { get; private set; }
         private string selectedController = null;
         private Controller.ControllerBase  currentController;
 
@@ -25,6 +26,7 @@ namespace GUI_v2.ViewModel
             var obj = (ComboBoxItem)parameter;
             modelContainer.jetsonClient.SetSteeringMode(obj.Content.ToString());
         }
+
         private void ArmedCallback()
         {
             if (selectedController == "Keyboard")

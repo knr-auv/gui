@@ -79,7 +79,8 @@
 
                         <CheckBox Name="HUDCheckBox" Content="HUD" 
                                   VerticalAlignment="Center" 
-                                  IsChecked="True"
+                               
+                                  IsChecked="{Binding HUDVisible}"
                                   IsEnabled="True"/>
                         <!--  IsChecked="{Binding ShowHUD}"/>-->
                         <StackPanel Margin="0 5"    

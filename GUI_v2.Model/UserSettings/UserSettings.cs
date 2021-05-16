@@ -16,10 +16,16 @@ namespace GUI_v2.Model.UserSettings
         public NetworkSettings networkSettings;
         public ControlSettings ControlSettings;
         public int ControllerInterval = 50;
-        public double Battery1MaxVoltage = 18.2;
-        public double Battery2MaxVoltage = 13.4;
-
-
+        public double Bat1MaxVoltage = 18.2;
+        public double Bat2MaxVoltage = 13.4;
+        public double Bat1MinVoltage = 0;
+        public double Bat2MinVoltage = 0;
+        public double Bat1Allert = 0;
+        public double Bat2Allert = 0;
+        //[XmlIgnore]
+        public delegate void SettingsChangedCb();
+        [XmlIgnore]
+        public SettingsChangedCb SettingsChangedCallback;
         public UserSettings()
         {
             networkSettings = new NetworkSettings();

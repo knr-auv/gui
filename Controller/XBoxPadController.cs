@@ -19,13 +19,24 @@ namespace Controller
         private Thread x;
         private double[] controlState;
         private int channels = 5;
-
+        private Dictionary<string, string> Assignment;
         public int deadband = 2500;
+        public Dictionary<string, float> PadState = new Dictionary<string, float>();
         public Point leftThumb, rightThumb = new System.Drawing.Point(0, 0);
         public float leftTrigger, rightTrigger;
         public XBoxPadController()
         {
             controlState = new double[channels];
+            PadState.Add("leftThumbX", 0);
+            PadState.Add("leftThumbY", 0);
+            PadState.Add("rightThumbY", 0);
+            PadState.Add("rightThumbX", 0);
+            PadState.Add("leftTrigger", 0);
+            PadState.Add("rightTrigger", 0);
+        }
+        public void SetButtonAssignment(Dictionary<string, string> assign)
+        {
+            Assignment = assign;
         }
         public override void StartController(Action<int[]> callback)
         {
@@ -50,6 +61,7 @@ namespace Controller
             LoopActive = true;
             DateTime last = DateTime.Now;
             int freq = controlSettings.ControllerInterval;
+            Assignment = controlSettings.PadAssignment;
             while (LoopActive)
             {
                 if ((DateTime.Now - last).Milliseconds >= freq)
@@ -68,18 +80,21 @@ namespace Controller
         {
             gamepad = controller.GetState().Gamepad;
 
-            leftThumb.X = (Math.Abs((float)gamepad.LeftThumbX) < deadband) ? 0 : gamepad.LeftThumbX / short.MinValue * -1000;
-            leftThumb.Y = (Math.Abs((float)gamepad.LeftThumbY) < deadband) ? 0 : gamepad.LeftThumbY / short.MaxValue * 1000;
-            rightThumb.Y = (Math.Abs((float)gamepad.RightThumbX) < deadband) ? 0 : gamepad.RightThumbX / short.MaxValue * 1000;
-            rightThumb.X = (Math.Abs((float)gamepad.RightThumbY) < deadband) ? 0 : gamepad.RightThumbY / short.MaxValue * 1000;
+            PadState["leftThumbX"] = (Math.Abs((float)gamepad.LeftThumbX) < deadband) ? 0 : gamepad.LeftThumbX / short.MaxValue * 1000;
+            PadState["leftThumbY"] =  (Math.Abs((float)gamepad.LeftThumbY) < deadband) ? 0 : gamepad.LeftThumbY / short.MaxValue * 1000;
+            PadState["rightThumbY"] = (Math.Abs((float)gamepad.RightThumbY) < deadband) ? 0 : gamepad.RightThumbY / short.MaxValue * 1000;
+            PadState["rightThumbX"] =(Math.Abs((float)gamepad.RightThumbX) < deadband) ? 0 : gamepad.RightThumbX / short.MaxValue * 1000;
             //values are between -1000 and 1000
-            leftTrigger = gamepad.LeftTrigger/255*1000;
-            rightTrigger = gamepad.RightTrigger/255*1000;
-            controlState[0] = rightThumb.X; //roll
-            controlState[1] = rightThumb.Y; //pitch
-            controlState[2] = leftThumb.X; //yaw
-            controlState[3] = leftThumb.Y; //throttle
-            controlState[4] = leftTrigger - rightTrigger; //emerge
+            PadState["leftTrigger"] = gamepad.LeftTrigger/255*1000;
+            PadState["rightTrigger"] = gamepad.RightTrigger/255*1000;
+
+
+
+            controlState[0] = PadState[Assignment["roll"]]; //roll
+            controlState[1] = PadState[Assignment["pitch"]]; //pitch
+            controlState[2] = PadState[Assignment["yaw"]]; //yaw
+            controlState[3] = PadState[Assignment["throttle"]]; //throttle
+            controlState[4] = PadState[Assignment["emerge"]] - PadState[Assignment["submerge"]]; //emerge
 
             int[] ret = new int[channels];
             for (int i = 0; i < channels; i++)

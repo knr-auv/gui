@@ -29,7 +29,7 @@
                 <CheckBox x:Name="ShowGyro" Content="Gyro" IsChecked="True" Checked="ShowGyroChanged" Unchecked="ShowGyroChanged" Foreground="{StaticResource ForegroundBrush}"/>
                 <CheckBox x:Name="ShowAcc" Content="Acc" IsChecked="True" Checked="ShowAccChanged" Unchecked="ShowAccChanged" Foreground="{StaticResource ForegroundBrush}"/>
                 <CheckBox x:Name="ShowMag" Content="Mag" IsChecked="True" Checked="ShowMagChanged" Unchecked="ShowMagChanged" Foreground="{StaticResource ForegroundBrush}"/>
-                <Label Content="If this page is lagging please disable few plots " Margin="0" Padding="10 0 5 0"/>
+                <Label Visibility="Collapsed" Content="If this page is lagging please disable few plots " Margin="0" Padding="10 0 5 0"/>
             </StackPanel>
         </Grid>
 

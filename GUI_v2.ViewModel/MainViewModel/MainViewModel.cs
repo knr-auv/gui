@@ -53,7 +53,14 @@ namespace GUI_v2.ViewModel
             //SettingsDialogHideCommand = new RelayCommand(SettingsDialogHideAction, AlwaysAllow);
             Battery1Voltage = 12.9;
             Battery2Voltage = 12.2;
-
+            modelContainer.userSettings.SettingsChangedCallback += () => {
+                RaisePropertyChanged("Battery1Voltage");
+                RaisePropertyChanged("Battery1Percent");
+                RaisePropertyChanged("Battery2Voltage");
+                RaisePropertyChanged("Battery2Percent");
+                RaisePropertyChanged("Battery1Allert");
+                RaisePropertyChanged("Battery2Allert");
+            };
 
         }
         

@@ -22,7 +22,7 @@ namespace GUI_v2.ViewModel
         {
             this.modelContainer = modelContainer;
             SensorStatusViewModel = new SensorStatusViewModel(modelContainer);
-    
+            modelContainer.modelStatus.ModeChangedCallback += (string v) => { RaisePropertyChanged("RealMode"); };
         }
     }
 }

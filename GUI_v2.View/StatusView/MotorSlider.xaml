@@ -23,7 +23,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Slider Grid.Row="0" Minimum="-500" Maximum="500"
-                    Value="{Binding MotorValue , RelativeSource={RelativeSource AncestorType=UserControl}}" TickPlacement="BottomRight" TickFrequency="5" Orientation="Vertical" Name="slider"/>
+                    TickFrequency="100"
+                    Value="{Binding MotorValue , RelativeSource={RelativeSource AncestorType=UserControl}}" TickPlacement="BottomRight"  Orientation="Vertical" Name="slider"/>
             <Label Grid.Row="1" Content="{Binding ElementName=slider, Path=Value}" ContentStringFormat="0" Width="35" VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="0" Padding="0"/>
         </Grid>
     </Grid>

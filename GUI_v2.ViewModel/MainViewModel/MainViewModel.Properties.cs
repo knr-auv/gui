@@ -18,6 +18,26 @@ namespace GUI_v2.ViewModel
         private double _hummidity = 10;
    
         private Cursor _cursor;
+        public double Battery1Allert
+        {
+            get 
+            {
+                double ret = modelContainer.userSettings.Bat1Allert - modelContainer.userSettings.Bat1MinVoltage;
+                ret /= modelContainer.userSettings.Bat1MaxVoltage - modelContainer.userSettings.Bat1MinVoltage;
+                return ret*100;
+            }
+            set {; }
+        }
+        public double Battery2Allert
+        {
+            get
+            {
+                double ret = modelContainer.userSettings.Bat2Allert - modelContainer.userSettings.Bat2MinVoltage;
+                ret /= modelContainer.userSettings.Bat2MaxVoltage - modelContainer.userSettings.Bat2MinVoltage;
+                return ret*100;
+            }
+            set {; }
+        }
 
         public double Battery1Percent
         {
@@ -32,12 +52,12 @@ namespace GUI_v2.ViewModel
         public double Battery1Voltage
         {
             get { return _battery1Voltage; }
-            set { SetProperty(ref _battery1Voltage, value); Battery1Percent = value / modelContainer.userSettings.Battery1MaxVoltage*100; }
+            set { SetProperty(ref _battery1Voltage, value); Battery1Percent = (value-modelContainer.userSettings.Bat1MinVoltage) /( modelContainer.userSettings.Bat1MaxVoltage-modelContainer.userSettings.Bat1MinVoltage)*100; }
         }
         public double Battery2Voltage
         {
             get { return _battery2Voltage; }
-            set { SetProperty(ref _battery2Voltage, value); Battery2Percent = value / modelContainer.userSettings.Battery2MaxVoltage*100; }
+            set { SetProperty(ref _battery2Voltage, value); Battery2Percent = (value - modelContainer.userSettings.Bat2MinVoltage) / (modelContainer.userSettings.Bat2MaxVoltage - modelContainer.userSettings.Bat2MinVoltage) * 100; }
         }
 
 

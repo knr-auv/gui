@@ -15,7 +15,18 @@ namespace GUI_v2.ViewModel
         private bool _detectionState = false;
         private double _acceleration = 0;
         private double _velocity = 0;
+        private bool _HUDVisible = false;
 
+        public bool HUDVisible
+        {
+            get { return _HUDVisible; }
+            set { _HUDVisible = value;
+                    if(value==true)
+                        CameraViewModel.DrawOnImage += HUDViewModel.Generate;
+                    else
+                        CameraViewModel.DrawOnImage -= HUDViewModel.Generate;
+            }
+        }
         public List<string> AvailableControllers
         {
             get { return Controller.ControllerBase.GetAvailableControllers(); }

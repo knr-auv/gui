@@ -72,11 +72,11 @@ namespace Controller
 
         private int[] calculateOutput()
         {
-            Dictionary<string, Key> keys = controlSettings.Assignment;
+            Dictionary<string, Key> keys = controlSettings.KeyboardAssignment;
             //roll
             var pressedKeys = keyboard.GetCurrentState().PressedKeys;
             Dictionary<Key, bool> memory = new Dictionary<Key, bool>();
-            foreach (var key in controlSettings.Assignment.Values)
+            foreach (var key in controlSettings.KeyboardAssignment.Values)
             {
                 if (!memory.ContainsKey(key))
                     memory.Add(key, false);

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GUI_v2.View.StatusView
 {
     /// <summary>
-    /// Interaction logic for Boat3DView.xaml
+    /// Interaction logic for MotorsImage.xaml
     /// </summary>
-    public partial class Boat3DView : UserControl
+    public partial class MotorsImage : UserControl
     {
-        public Boat3DView()
+        public MotorsImage()
         {
             InitializeComponent();
         }

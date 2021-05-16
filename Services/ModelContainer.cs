@@ -28,10 +28,12 @@ namespace GUI_v2.ViewModel
             cameraStreamClient = new CameraStreamClient();
             jetsonClient = new JetsonClient();
             keyboardController = new KeyboardController();
+            xBoxPadController = new XBoxPadController();
         }
         public void SetUserSettings()
         {
             keyboardController.SetUserSettings(userSettings.ControlSettings);
+            xBoxPadController.SetUserSettings(userSettings.ControlSettings);
         }
     }
 }

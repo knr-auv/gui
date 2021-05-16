@@ -11,7 +11,7 @@ namespace Services.DialogServices.SettingsDialog
         {
             Key  keys;
             Enum.TryParse(value.ToString(), out keys);
-            controlSettings.Assignment[key] = keys;
+            controlSettings.KeyboardAssignment[key] = keys;
         }
         private bool Allow(object param) => true;
 
@@ -22,8 +22,8 @@ namespace Services.DialogServices.SettingsDialog
         private ControlSettings controlSettings;
         public Dictionary<string, Key> KeyboardAssignment
         {
-            get { return controlSettings.Assignment; }
-            set { controlSettings.Assignment = value; }
+            get { return controlSettings.KeyboardAssignment; }
+            set { controlSettings.KeyboardAssignment = value; }
         }
         public ControlSettingsViewModel(ControlSettings controlSettings)
         {

@@ -25,37 +25,62 @@ namespace Controller
         public Key pitchForwardKey;
         public Key pitchBackwardKey;
 
-        [XmlIgnoreAttribute]
-        public Dictionary<string, Key> Assignment;
+        public string submergeKey_pad;
+        public string emergeKey_pad;
+        public string throttleKey_pad;
+        public string yawKey_pad;
+        public string rollKey_pad;
+ 
+        public string pitchKey_pad;
 
+        [XmlIgnoreAttribute]
+        public Dictionary<string, Key> KeyboardAssignment;
+        [XmlIgnoreAttribute]
+        public Dictionary<string, string> PadAssignment;
 
         public void BeforeSerialization()
         {
-            submergeKey = Assignment["submerge"];
-            emergeKey = Assignment["emerge"];
-            forwardKey = Assignment["forward"];
-            backwardKey = Assignment["backward"];
-            yawLeftKey = Assignment["yawLeft"];
-            yawRightKey = Assignment["yawRight"];
-            rollLeftKey = Assignment["rollLeft"];
-            rollRightKey = Assignment["rollRight"];
-            pitchForwardKey = Assignment["pitchForward"];
-            pitchBackwardKey = Assignment["pitchBackward"];
-        }
+            submergeKey = KeyboardAssignment["submerge"];
+            emergeKey = KeyboardAssignment["emerge"];
+            forwardKey = KeyboardAssignment["forward"];
+            backwardKey = KeyboardAssignment["backward"];
+            yawLeftKey = KeyboardAssignment["yawLeft"];
+            yawRightKey = KeyboardAssignment["yawRight"];
+            rollLeftKey = KeyboardAssignment["rollLeft"];
+            rollRightKey = KeyboardAssignment["rollRight"];
+            pitchForwardKey = KeyboardAssignment["pitchForward"];
+            pitchBackwardKey = KeyboardAssignment["pitchBackward"];
+
+            submergeKey_pad = PadAssignment["submerge"];
+            emergeKey_pad = PadAssignment["emerge"];
+            throttleKey_pad = PadAssignment["throttle"];
+            yawKey_pad = PadAssignment["yaw"];
+            rollKey_pad = PadAssignment["roll"];
+            pitchKey_pad = PadAssignment["pitch"];
+
+
+    }
 
         public void AfterSerialization()
         {
-            Assignment = new Dictionary<string, Key>();
-            Assignment.Add("submerge", submergeKey);
-            Assignment.Add("emerge", emergeKey);
-            Assignment.Add("forward", forwardKey);
-            Assignment.Add("backward", backwardKey);
-            Assignment.Add("yawLeft", yawLeftKey);
-            Assignment.Add("yawRight", yawRightKey);
-            Assignment.Add("rollLeft", rollLeftKey);
-            Assignment.Add("rollRight", rollRightKey);
-            Assignment.Add("pitchForward", pitchForwardKey);
-            Assignment.Add("pitchBackward", pitchBackwardKey);
+            KeyboardAssignment = new Dictionary<string, Key>();
+            KeyboardAssignment.Add("submerge", submergeKey);
+            KeyboardAssignment.Add("emerge", emergeKey);
+            KeyboardAssignment.Add("forward", forwardKey);
+            KeyboardAssignment.Add("backward", backwardKey);
+            KeyboardAssignment.Add("yawLeft", yawLeftKey);
+            KeyboardAssignment.Add("yawRight", yawRightKey);
+            KeyboardAssignment.Add("rollLeft", rollLeftKey);
+            KeyboardAssignment.Add("rollRight", rollRightKey);
+            KeyboardAssignment.Add("pitchForward", pitchForwardKey);
+            KeyboardAssignment.Add("pitchBackward", pitchBackwardKey);
+
+            PadAssignment.Add("yaw", yawKey_pad);
+            PadAssignment.Add("throttle", throttleKey_pad);
+            PadAssignment.Add("roll", rollKey_pad);
+            PadAssignment.Add("pitch", pitchKey_pad);
+            PadAssignment.Add("submerge", submergeKey_pad);
+            PadAssignment.Add("emerge", emergeKey_pad);
         }
 
         public ControlSettings()
@@ -71,17 +96,25 @@ namespace Controller
             pitchForwardKey = Key.Up;
             pitchBackwardKey = Key.Down;
 
-            Assignment = new Dictionary<string, Key>();
-            Assignment.Add("submerge", Key.LeftControl);
-            Assignment.Add("emerge", Key.LeftShift);
-            Assignment.Add("forward", Key.W);
-            Assignment.Add("backward", Key.S);
-            Assignment.Add("yawLeft", Key.A);
-            Assignment.Add("yawRight", Key.D);
-            Assignment.Add("rollLeft", Key.Left);
-            Assignment.Add("rollRight", Key.Right);
-            Assignment.Add("pitchForward", Key.Up);
-            Assignment.Add("pitchBackward", Key.Down);
+            KeyboardAssignment = new Dictionary<string, Key>();
+            KeyboardAssignment.Add("submerge", Key.LeftControl);
+            KeyboardAssignment.Add("emerge", Key.LeftShift);
+            KeyboardAssignment.Add("forward", Key.W);
+            KeyboardAssignment.Add("backward", Key.S);
+            KeyboardAssignment.Add("yawLeft", Key.A);
+            KeyboardAssignment.Add("yawRight", Key.D);
+            KeyboardAssignment.Add("rollLeft", Key.Left);
+            KeyboardAssignment.Add("rollRight", Key.Right);
+            KeyboardAssignment.Add("pitchForward", Key.Up);
+            KeyboardAssignment.Add("pitchBackward", Key.Down);
+
+            PadAssignment = new Dictionary<string, string>();
+            PadAssignment.Add("yaw", "leftThumbX");
+            PadAssignment.Add("throttle", "leftThumbY");
+            PadAssignment.Add("roll", "rightThumbX");
+            PadAssignment.Add("pitch", "rightThumbY");
+            PadAssignment.Add("submerge", "leftTrigger");
+            PadAssignment.Add("emerge", "rightTrigger");
         }
     }
 }

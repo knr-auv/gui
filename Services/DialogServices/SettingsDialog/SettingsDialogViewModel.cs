@@ -49,6 +49,40 @@ namespace Services.DialogServices.SettingsDialog
             CloseDialogWithResult(parameter as Window, DialogResult.Undefined);
         }
 
+        private void AppSettingsChanged()
+        {
+            userSettings.SettingsChangedCallback?.Invoke();
+        }
+        public double Bat2Allert
+        {
+            get { return userSettings.Bat2Allert; }
+            set { userSettings.Bat2Allert = value; AppSettingsChanged(); }
+        }
+        public double Bat1Allert
+        {
+            get { return userSettings.Bat1Allert; }
+            set { userSettings.Bat1Allert = value; AppSettingsChanged(); }
+        }
+        public double Bat1Max
+        {
+            get { return userSettings.Bat1MaxVoltage; }
+            set { userSettings.Bat1MaxVoltage = value; AppSettingsChanged(); }
+        }
+        public double Bat2Max
+        {
+            get { return userSettings.Bat2MaxVoltage; }
+            set { userSettings.Bat2MaxVoltage = value; AppSettingsChanged(); }
+        }
+        public double Bat2Min
+        {
+            get { return userSettings.Bat2MinVoltage; }
+            set { userSettings.Bat2MinVoltage = value; AppSettingsChanged(); }
+        }
+        public double Bat1Min
+        {
+            get { return userSettings.Bat1MinVoltage; }
+            set { userSettings.Bat1MinVoltage = value; AppSettingsChanged(); }
+        }
         public string JetsonIP
         {
             get { return userSettings.networkSettings.JetsonIP; }

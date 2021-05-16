@@ -93,7 +93,7 @@
 
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Visibility="{Binding TopBarViewModel.RealMode, Converter={StaticResource BoolToVisibility}}">
-                <common:BatteryWidget Width="150" Height="50" Grid.Column="1" BatteryLevel="{Binding Battery1Percent}" BatteryCritical="20" VerticalAlignment="Center"/>
+                    <common:BatteryWidget Width="150" Height="50" Grid.Column="1" BatteryLevel="{Binding Battery1Percent}" BatteryCritical="{Binding Battery1Allert}" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="First Battery : " Padding="0"/>
                         <Label Content="{Binding Battery1Voltage}"  ContentStringFormat="0.00" Padding="0"/>
@@ -101,7 +101,7 @@
                     </StackPanel>
             </StackPanel>
                 <StackPanel Grid.Column="3" VerticalAlignment="Center" Visibility="{Binding TopBarViewModel.RealMode, Converter={StaticResource BoolToVisibility}}">
-                    <common:BatteryWidget Width="150" Height="50" Grid.Column="1" BatteryLevel="{Binding Battery2Percent}" BatteryCritical="20" VerticalAlignment="Center"/>
+                    <common:BatteryWidget Width="150" Height="50" Grid.Column="1" BatteryLevel="{Binding Battery2Percent}" BatteryCritical="{Binding Battery2Allert}" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="Second Battery : " Padding="0"/>
                         <Label Content="{Binding Battery2Voltage}" ContentStringFormat="0.00" Padding="0"/>

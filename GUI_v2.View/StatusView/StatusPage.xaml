@@ -23,6 +23,19 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StatusView:MotorsImage/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StatusView:BoatOverview Margin="472,0,-472,0"/>
+            </Grid>
+           
+        </Grid>
         <Grid Grid.Column="1">
             <Grid Background="{StaticResource OnBackgroundBrush}" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
